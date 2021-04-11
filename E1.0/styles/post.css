@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap');
+
+body {
+    background-color: #ace;
+}
+
+article {
+    background-color: azure;
+}
+
+body {
+    margin: 0;
+}
+
+#barralogo {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+}
+
+#logo img {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#logo span{
+    font-family: 'Cinzel Decorative';
+    font-size: 40px;
+    color: azure;
+    position: absolute;
+    top: 25%;
+    left: 80px;
+}
+
+#logo {
+    margin-left: 0px;
+    position: relative;  
+    left: 0px;
+}
