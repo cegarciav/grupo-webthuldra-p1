@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  background-color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1%;
+  background-color: blue;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0.5em;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1%;
+  background-color: white;
+}
+
+footer ul li {
+  display: inline-block;
+  padding: 0.5em;
+  color: gray;
+  font-size: 0.8em;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: gray;
+}
+
+main {
+  margin: 0 auto;
+  display: block;
+  width: 90%;
+}
+
+.sn-pagination ul {
+  margin: 0 auto;
+  padding: 0%;
+  text-align: center;
+  list-style-type: none;
+}
+
+.sn-pagination ul li {
+  display: inline-block;
+}
+
+.sn-pagination a {
+  text-decoration: none;
+}
