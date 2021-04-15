@@ -9,13 +9,17 @@ article {
     background-color: azure;
 }
 
+header {
+    margin-top: 0;
+}
+
 body {
     margin: 0;
 }
 
 #barralogo {
     background-color: #25559a;
-    margin: 0;
+    margin-top: 0;
     padding: 0;
 }
 
@@ -49,57 +53,96 @@ body {
     margin: 0;
     padding: 0;
 }
+
 article {
     display: inline-block;
 }
 
 article.post {
     height: max-content;
+    display: inline-block;
     width: 55%;
 }
 
-article.otracosa {
-    height: 20%;
-    width: 20%;
-}
 
 .post .foto-usuario-post img {
-    width: 120px;
-    height: 100px;
-    margin: 10px 10px 10px 10px;
+    width: 15%;
+    height: 15%;
     border-radius: 40%/60%;
-    overflow: hidden;
+    margin-left: 5%;
+    margin-top: 2%;
     float: left;
+    clear: both;
 }
 
 article.post h2 {
-    display: inline-block;
     font-family: 'Cinzel';
-    margin-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    float: left;
+    clear: both;
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-bottom: 0%;
+    white-space: nowrap;
+    font-size: 1.8vw;
 }
 
 article.post h4 {
     font-family: 'Cinzel';
-    display: block;
-    margin-left: 180px;
-    margin-top: 0px;
+    float: left;
+    clear: both;
+    margin-top: 0%;
+    margin-left: 10%;
+    font-size: 1vw;
 }
 
-article.post p {
+.post span#publicacion {
     font-family: 'Cinzel';
-    font-size: 20px;
-    display: block;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 40px;
+    font-size: 1.3vw;
+    float: left;
+    right: 5%;
+    top: 17%;
+    left: 5%;
+    display: inline-block;
 }
 
 .post .foto-post img {
-    height: max-content;
-    width: max-content;
-    margin-left: 20%;
+    height: 90%;
+    width: 90%;
+    margin-left: 5%;
     overflow: hidden;
+    float: left;
+    clear: both;
+    margin-top: 12%;
 }
 
+.post {
+    position: relative;
+    left: 25%;
+}
+
+.post span{
+    position: absolute;
+}
+
+.botones {
+    clear: both;
+    margin-left: 5%;
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 1%;
+    background-color: #ace;
+}
+
+footer ul li {
+    display: inline-block;
+    padding: 0.5em;
+    color: gray;
+    font-size: 0.8em;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: gray;
