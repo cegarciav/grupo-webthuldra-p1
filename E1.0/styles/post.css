@@ -1,185 +1,102 @@
 @import url(https://fonts.googleapis.com/css?family=Cinzel);
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap');
 
-body {
-    background-color: #ace;
+@media only screen and (min-width: 800px) {
+    .post {
+        width: 50%;
+    }
 }
 
-article {
-    background-color: azure;
-}
-
-header {
-    max-width: 100%;
-    padding-top: 0%;
-    position: relative;
-    margin-top: 0%;
-}
-
-body {
-    margin: 0;
-    padding: 0%;
-    max-width: 100%;
-}
-
-#barralogo {
-    background-color: #25559a;
-    margin-top: 0;
-    padding: 0;
-    max-width: 100%;
-}
-
-#logo img {
-    width: 70px;
-    height: 70px;
-    margin-top: 10px;
-    margin-left: 5%;
-}
-
-
-#logo span{
-    font-family: 'Cinzel Decorative';
-    font-size: 40px;
-    color: azure;
-    position: absolute;
-    top: 25%;
-    margin-left: 10%;
-    margin-bottom: 0%;
-}
-
-#logo {
-    position: relative;  
-}
-
-article.post {
-    display: inline-block;
-    width: 50%;
-    max-width: 100%;
-    margin-top: 1%;
-    margin-left: auto;
-}
-
-
-.post .foto-usuario-post img {
-    width: 15%;
-    height: 15%;
-    border-radius: 40%/60%;
-    margin-left: 5%;
-    margin-top: 2%;
-    float: left;
-    clear: both;
-}
-
-article.post h2 {
-    font-family: 'Cinzel';
-    float: left;
-    clear: both;
-    margin-top: 15%;
-    margin-left: 5%;
-    margin-bottom: 0%;
-    white-space: nowrap;
-    font-size: 1.8vw;
-}
-
-article.post h4 {
-    font-family: 'Cinzel';
-    float: left;
-    clear: both;
-    margin-top: 0%;
-    margin-left: 10%;
-    font-size: 1vw;
-}
-
-.post span#publicacion {
-    font-family: 'Cinzel';
-    font-size: 1.3vw;
-    right: 5%;
-    top: 17%;
-    left: 5%;
-    margin-bottom: 5%;
-    display: inline-block;
-}
-
-.post .foto-post img {
-    height: 90%;
-    width: 90%;
-    margin-left: 5%;
-    overflow: hidden;
-    float: left;
-    clear: both;
-    margin-top: 18%;
-    margin-bottom: 1%;
+@media only screen and (max-width: 799px) {
+    .post {
+        width: 100%;
+    }
 }
 
 .post {
-    position: relative;
-    left: 25%;
-    float: left;
-    clear: both;
+    height: max-content;
     display: block;
+    margin: 0 auto;
+    margin-bottom: 3vw;
+    padding: 5px 20px;
+    background-color: azure;
+    box-sizing: border-box;
 }
 
-.post span{
-    position: absolute;
+.post header {
+    height: 15%;
+    box-sizing: border-box;
+}
+
+.post main {
+    height: 80%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.post figure {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.post .foto-usuario-post img {
+    height: 70px;
+    border-radius: 40%/60%;
+    margin-right: 1em;
+}
+
+.info-usuario h1 {
+    font-family: 'Cinzel';
+    white-space: nowrap;
+    font-size: 4vh;
+    margin: 0;
+    padding: 1%;
+    padding-left: 0;
+}
+
+.info-usuario h2 {
+    font-family: 'Cinzel';
+    margin: 0;
+    font-size: 2.5vh;
+    padding: 1%;
+    padding-left: 0;
+}
+
+.post .publicacion {
+    font-family: 'Cinzel';
+    font-size: 2.3vh;
+    padding-bottom: 1%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.post .foto-post {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.post .foto-post img {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 1%;
 }
 
 .botones {
-    clear: both;
-    margin-left: 5%;
+    box-sizing: border-box;
+    height: 5%;
 }
 
-footer ul {
-    list-style-type: none;
-    margin: 0;
-    padding-left: 1%;
-    background-color: #ace;
-}
-
-footer ul li {
-    display: inline-block;
-    padding: 0.5em;
-    color: gray;
-    font-size: 0.8em;
-}
-
-footer ul li a {
+.post-details {
     text-decoration: none;
-    color: gray;
+    color: #25559a;
 }
-
-footer {
-    float: left;
-    display: inline-block;
-    clear: both;
-    white-space: nowrap;
-}
-
-header span p {
-    font-size: 20px;
-    font-family: 'Cinzel';
-    border: rgb(255, 255, 255) solid;
-    background-color: #25559a;
-    color:rgb(73, 121, 175);
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0.5%;
-    display: inline-block;
-    width: 23%;
-    margin-left: 0.5% ;
-}
-
-header span {
-    margin-left: 1.5%;
-    margin-top: 0%;
-}
-
-a:hover {
-    text-decoration: none;
-    color:  rgb(1, 91, 180);
-}
-
-a {
-    text-decoration: none;
-    color:rgb(255, 255, 255);
-  }
-

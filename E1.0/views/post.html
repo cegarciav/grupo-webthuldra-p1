@@ -7,71 +7,66 @@
         <!--(width=device-width) Establece el ancho de la página para que sea igual que el ancho de la pantalla del dispositivo.-->
         <!--(initial-scale=1.0) Establece el nivel de zoom inicial cuando el navegador carga la página por primera vez.-->
         <title>Webthuldra - Post</title>
+        <link rel="stylesheet" href="../styles/main.css">
         <link rel="stylesheet" href="../styles/post.css"><!--Link a una hoja de estilo externa.-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <div id="barralogo"> <!--Sirve para crear secciones o agrupar contenidos.-->
-                <div id="logo">
-                    <p><!--Distribuye el texto en párrafos-->
-                        <img src="https://www.flaticon.com/svg/vstatic/svg/3654/3654747.svg?token=exp=1618001899~hmac=7705ed2dbdbf566223e6917c8ef308bf" alt="Ícono de un copo de nieve.">
-                        <!--Linkea una imagen. src especifica el path a la imagen y alt es un texto alternativo, en caso de que la imagen no aparezca.-->
-                    </p>
-
-                    <span><!--Sirve para aplicar estilo al texto o agrupar elementos en línea.-->
-                    Webthuldra
-                    </span>
-                </div>
-
-                <span>
-                    <p>
+        <header id="main-header">
+            <nav> <!--Sirve para crear secciones o agrupar contenidos.-->
+                <ul>
+                    <li id="logo">
+                        <a href="../views/mainFeed.html">
+                            <!--Linkea una imagen. src especifica el path a la imagen y alt es un texto alternativo, en caso de que la imagen no aparezca.-->
+                            <img src="../images/snowflakes-png-11574.png" alt="Ícono de un copo de nieve.">
+                            Webthuldra
+                        </a>
+                    </li>
+                    <li>
                         <a href="../views/mainFeed.html">Muro</a>
-                    </p> 
-                    <p>
+                    </li>
+                    <li>
                         <a href="../profile/userProfile.html">Mi Perfil</a>
-                    </p>
-                    <p>
+                    </li>
+                    <li>
                         <a href="">Noticias</a>
-                    </p>
-                    <p>
+                    </li>
+                    <li>
                         <a href="">Clima</a>
-                    </p>        
-                <span>
-
-            </div>
-
+                    </li>
+                </ul>
+            </nav>
         </header>
 
         <main>
-                
+            <section>
                 <article class="post">
-                    <div class="foto-usuario-post">
-                        <img src="https://www.parati.com.ar/wp-content/uploads/2020/02/FROZEN-ELSA-OSCARS-DESTACADA-GENTILEZA-DISNEY-768x661.jpg">
-                    </div>
-                    
-                    <span id="info-usuario">
-                        <h2>Elsa De Arendelle</h2>
-                        <h4>#reinadehielo</h4>
-                    </span>
-
-                    <span id="publicacion">
+                    <header>
+                        <figure class="foto-usuario-post">
+                            <img src="https://www.parati.com.ar/wp-content/uploads/2020/02/FROZEN-ELSA-OSCARS-DESTACADA-GENTILEZA-DISNEY-768x661.jpg">
+                            <figcaption class="info-usuario">
+                                <h1>Elsa de Arendelle</h1>
+                                <h2>#reinadehielo</h2>
+                            </figcaption>
+                        </figure>
+                    </header>
+                    <main>
+                        <section class="publicacion">
                             ¡El día está perfecto para salir a patinar! 
                             Recuerden traer sus patines al lago, habitantes de Arendelle, porque lo congelaré a eso de las 17.00 hrs. 
                             ¡No olviden mantener distancia y usar una mascarilla!
-                    </span>
+                        </section>
+                        <section class="foto-post">
+                            <img src="https://i.pinimg.com/originals/00/16/74/0016747655996706230638e919196f27.gif">
+                        </section>
+                    </main>
 
-                    <div class="foto-post">
-                        <img src="https://i.pinimg.com/originals/00/16/74/0016747655996706230638e919196f27.gif">
-                    </div>
-            
-
-                    <div class="botones">
-                        <i id="comentar-like" class="material-icons">chat_bubble_outline</i>
-                        <i id="boton-like" class="material-icons">favorite_border</i> 
-                    </div>
-                    
+                    <section class="botones">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <i class="material-icons">favorite_border</i> 
+                    </section>
                 </article>
+            </section>
         </main>
 
         <footer>
