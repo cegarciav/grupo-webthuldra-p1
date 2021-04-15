@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="profile.css">
     <head>
       <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -10,7 +12,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   
-  </head>
+    </head>
 </head>
 <body>
    <!-- Vamos a ocupar position relative y absolute para crear nuestro logo.
@@ -35,20 +37,16 @@
             <a href="#top">Mi Perfil</a>
         </p> 
         <p>
-            <a href="#section-one">Publicaciones</a>
+            <a href="#section-one">Mis Publicaciones</a>
         </p>
         <p>
-            <a href="#section-two">Amigos</a>
+            <a href="../views/mainFeed.html">Muro</a>
         </p>
         <p>
-            <a href="#footer">Contacto</a>
+            <a href="#footer">Cerrar Sesión</a>
         </p>        
     </div>
     <header>
-      <div class="boton">
-        <i id="message-boton" class="material-icons">message</i>
-        <i id="photo-boton" class="material-icons">photo_camera</i> 
-    </div>
 </div> 
 <header>
     <div class="header-content">
@@ -60,66 +58,81 @@
         <h2>@Elsafreski</h2>
         <h4>"Libre soy..."</h4>
 
-        <!-- Descomentar en PARTE 4.4 -->
         <div class="clearfix"></div>
 
     </div>
   </header>
       
       <section id=section-one>
-        <h1>Section One</h1>
+        <h1>Publicaciones</h1>
         <div class="grid">
+          
           <div class="box s1-a">
-            <h2>S1-A</h2>
-          </div>
-          <!-- <div class="box s1-b">
-            <h2>S1-B</h2>
+            <div class="header-content-post">
+              <div class="profile-pic-post">
+                <a href="../views/post.html"><img src="images/profile-pic.jpg"></a>
+              </div>
+              <div class="post">
+                <a href="../views/post.html"><h2>Elsa De Arendelle</h2></a>
+                <h4>Comento: "¡El día está perfecto para salir a patinar! Recuerden traer sus patines al lago, habitantes de Arendelle, porque lo congelaré a eso de las 17.00 hrs. ¡No olviden mantener distancia y usar una mascarilla!
+                  Imagen "</h4>
+              </div>
+      
+              
+          </div> 
+          <div class="box s1-b">
+            <div class="header-content-post">
+              <div class="profile-pic-post">
+                <a href="../views/post.html"><img src="images/profile-pic.jpg"></a>
+              </div>
+              <div class="post">
+                <a href="../views/post.html"><h2>Elsa De Arendelle</h2></a>
+                <h4>Comento: "Hasta cuando hay cuarentena..."</h4>
+              </div>
           </div>
           <div class="box s1-c">
-            <h2>S1-C</h2>
+            <div class="header-content-post">
+              <div class="profile-pic-post">
+                <a href="../views/post.html"><img src="images/profile-pic.jpg"></a>
+              </div>
+              <div class="post">
+                <a href="../views/post.html"><h2>Elsa De Arendelle</h2></a>
+                <h4>Comento: "Y si hacemos un muñeco..."</h4>
+              </div>
           </div>
           <div class="box s1-d">
-            <h2>S1-D</h2>
+            <div class="header-content-post">
+              <div class="profile-pic-post">
+                <a href="../views/post.html"><img src="images/profile-pic.jpg"></a>
+              </div>
+              <div class="post">
+                <a href="../views/post.html"><h2>Elsa De Arendelle</h2></a>
+                <h4>Comento: "Libre no sooooy!!! T-T"</h4>
+              </div>
           </div>
           <div class="box s1-e">
-            <h2>S1-E</h2>
-          </div> -->
+            <div class="header-content-post">
+              <div class="profile-pic-post">
+                <a href="../views/post.html"><img src="images/profile-pic.jpg"></a>
+              </div>
+              <div class="post">
+                <a href="../views/post.html"><h2>Elsa De Arendelle</h2></a>
+                <h4>Comento: "Holaaa!!!"</h4>
+              </div>
+          </div>
 
         </div>
       </section>
       
-      
-      
-      <section id=section-two>
-        <h1>Section Three</h1>
-        <div class="flex">
-          <div class="box s3-a">
-            <h2>S3-A</h2>
-          </div>
-          <div class="box s3-b">
-            <h2>S3-B</h2>
-          </div>
-          <div class="box s3-c">
-            <h2>S3-C</h2>
-          </div>
-          <div class="box s3-d">
-            <h2>S3-D</h2>
-          </div>
-          <div class="box s3-e">
-            <h2>S3-E</h2>
-          </div>
-          <div class="box s3-f">
-            <h2>S3-F</h2>
-          </div>
-        </div>
-      </section>
-      
-      <footer id="footer">
-        <p>
-            <a href="https://twitter.com/" target="_blank">Sigueme en Tweeter!</a>  
-        </p>
-        <p>
-            <a href="https://www.instagram.com/" target="_blank">Sigueme en Instagram!</a>
-        </p>
+      <footer>
+        <ul>
+        <li>Webthuldra &copy; 2021</li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+        </ul>
     </footer>
 </body>
+
+
+
+
