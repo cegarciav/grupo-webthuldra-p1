@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap');
+
+/******************************************************** HEADER ***************************************************/
+
+.header-content {
+  border: 4px solid azure;
+  border-radius: 10px;
+  background: linear-gradient(
+    150deg,
+    #25559a,
+   #ace
+  );
+  height: max-content;
+}
+
+.profile-pic {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.profile-pic img{
+  margin-right: 1em;
+  width: 200px;
+  border: 4px solid azure;
+  height: auto;
+  border-radius: 50%/50%;
+}
+
+.profile-pic figcaption h1, h2, h4 {
+  margin: 0;
+  padding: 1%;
+  padding-left: 0;
+  color: black;
+  font-weight: normal;
+}
+
+.profile-pic h1 {
+  white-space: nowrap;
+  font-size: 4.5vh;
+}
+
+.profile-pic h2 {
+  font-size: 3vh;
+}
+
+.profile-pic h4 {
+  font-size: 2.5vh;
+  font-style: italic;
+  color: #1b222c;
+}
