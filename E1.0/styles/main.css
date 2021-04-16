@@ -15,25 +15,25 @@ body {
 }
 
 nav ul {
+  display: flex;
+  flex-direction: row;
   list-style-type: none;
   margin: 0;
   padding-left: 0;
   background-color: #25559a;
-  height: 4em;
+  height: max-content;
   box-sizing: border-box;
 }
 
 nav ul li {
-  display: inline-block;
   height: 100%;
   padding: 6px 5px;
   box-sizing: border-box;
-  vertical-align: middle;
+  text-align:justify;
 }
 
 nav ul li a {
   color: azure;
-  font-size: 1.2em;
   text-decoration: none;
   display: inline-block;
   height: 100%;
@@ -91,6 +91,10 @@ main {
 #logo:hover {
   text-decoration: none;
   background-color: inherit;
+}
+
+#logo {
+  min-width: max-content;
 }
 
 #logo a {
