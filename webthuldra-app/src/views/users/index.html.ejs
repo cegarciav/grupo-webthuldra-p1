@@ -6,4 +6,19 @@
     Usuarios
 </p>
 
-<p><%= usersList %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% usersList.forEach( (user) => { %>
+            <tr>
+                <td><a href=<%= userPath(user) %>><%= user.firstName %></a></td>
+                <td><%= user.lastName %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
