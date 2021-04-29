@@ -31,6 +31,18 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         isEmail: true
       }
+    },
+    tag: {
+      type: DataTypes.STRING,
+    },
+    description: {
+      type: DataTypes.STRING
+    },
+    picture: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true
+      }
     }
   }, {
     sequelize,

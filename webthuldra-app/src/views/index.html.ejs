@@ -1,6 +1,37 @@
-<h1>Hello world!!</h1>
-<p>
-  App web version
-  <%= appVersion %>
-</p>
-<div id="react-app">Here a React app will be rendered</div>
+<main>
+  <section class="sn-posts-feed">
+    <% posts.forEach(post => { %>
+      <article class="post">
+        <header>
+          <figure class="foto-usuario-post">
+            <a href=<%= userPath(post.user.id) %>>
+              <img src=<%= post.user.picture %>>
+            </a>
+            <figcaption class="info-usuario">
+              <a href=<%= userPath(post.user.id) %>>
+                <h1><%= post.user.firstName + " " + post.user.lastName %> </h1>
+              </a>
+            </figcaption>
+          </figure>
+        </header>
+        <main>
+          <a href=<%= postPath(post.id) %> class="post-details">Ver detalles</a>
+        </main>
+
+        <section class="botones">
+          <i class="material-icons">chat_bubble_outline</i>
+          <i class="material-icons">favorite_border</i> 
+        </section>
+      </article>
+    <% }); %>
+  </section>
+  <section class="sn-pagination">
+    <ul>
+      <li><a href=<%= rootPath() %>>&laquo;</a></li>
+      <% pagesArray.forEach(page => { %>
+        <li><a href=<%= rootPath(page) %>><%= page %></a></li>
+      <% }); %>
+      <li><a href=<%= rootPath(pagesAmount) %>>&raquo;</a></li>
+    </ul>
+  </section>
+</main>
