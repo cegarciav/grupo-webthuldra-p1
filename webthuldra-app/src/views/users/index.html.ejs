@@ -16,7 +16,7 @@
     <tbody>
         <% usersList.forEach( (user) => { %>
             <tr>
-                <td><a href=<%= userPath(user) %>><%= user.firstName %></a></td>
+                <td><a href=<%= userPath(user.id) %>><%= user.firstName %></a></td>
                 <td><%= user.lastName %></td>
             </tr>
         <% }) %>

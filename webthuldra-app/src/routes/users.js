@@ -13,7 +13,6 @@ router.get('users.list', '/', async (ctx) => {
   const usersList = await ctx.orm.user.findAll();
     await ctx.render('users/index', {
       usersList,
-      userPath: (user) => ctx.router.url('users.show', {id: user.id}),
       notice: ctx.flashMessage.notice,
     });
   });

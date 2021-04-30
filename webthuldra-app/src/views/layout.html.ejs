@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset="utf-8">
-    <title>IIC2513 - CHANGE-ME</title>
-    <% if (env !== 'development') { %>
-      <link rel="stylesheet" href="<%= assetPath('app.css') %>">
-    <% } %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webthuldra</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<%= assetPath('app.css') %>">
   </head>
 
   <body>
-    <header>
-      <div id="logo">
-        <img src="<%= assetPath('logo.png') %>" alt="Logo" />
-      </div>
+    <header id="main-header">
+      <nav> <!--Sirve para crear secciones o agrupar contenidos.-->
+        <ul>
+          <li id="logo">
+            <a href=<%= rootPath() %> >
+              <img src="<%= assetPath('webthuldra_logo.png') %>" alt="Ícono de un copo de nieve.">
+              Webthuldra
+            </a>
+          </li>
+          <li>
+            <a href="/">Muro</a>
+          </li>
+          <li>
+            <a href=<%= userPath() %> >Mi Perfil</a>
+          </li>
+          <li>
+            <a href= <%= userPath() + "#section-one" %>>Mis Publicaciones</a>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <%- body %>
     <script src="<%= assetPath('app.js') %>"></script>
+    <footer>
+      <ul>
+        <li>Webthuldra &copy; 2021</li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+    </footer>
   </body>
 
 </html>
