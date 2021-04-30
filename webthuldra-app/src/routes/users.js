@@ -35,7 +35,7 @@ router.get('users.show', '/:id', async (ctx) => {
 router.post('users.create', '/', async(ctx) => {
   const user = ctx.orm.user.build(ctx.request.body);
   try {
-    await user.save({ fields: ['lastName', 'firstName', 'email'] });
+    await user.save({ fields: ['lastName', 'firstName', 'email', 'tag', 'description', 'image'] });
     ctx.redirect(ctx.router.url('users.list'));
   } catch (ValidationError) {
     await ctx.render('users/new', {

@@ -11,16 +11,28 @@
     <% } %>
     <form action="<%= submitUserPath %>" method="post">
         <div>
-            <label for="firstName">Nombre</label>
+            <label for="firstName">Introduce tu nombre</label>
             <input type="text" name="firstName" value="Sven"/> 
         </div>
         <div>
-            <label for="lastName">Apellido</label>
+            <label for="lastName">Introduce tu apellido</label>
             <input type="text" name="lastName" value="Reno"/> 
         </div>
         <div>
-            <label for="email">email</label>
+            <label for="email">Introduce tu email</label>
             <input type="email" name="email" /> 
+        </div>
+        <div>
+            <label for="tag">Introduce tu nombre de usuario</label>
+            <input type="text" name="tag" /> 
+        </div>
+        <div>
+            <label for="description">Escribe una pequeña descripción tuya</label>
+            <input type="text" name="description" /> 
+        </div>
+        <div>
+            <label for="picture">Introduce una dirección URL con tu imagen</label>
+            <input type="url" name="Picture" /> 
         </div>
         <div>
             <input type="submit" name="create" value="Registrar" /> 
