@@ -1,0 +1,29 @@
+<div>
+    <% if (errors) { %>
+        <div class="errors">
+            You need to fix the following errors:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+    <form action="<%= submitUserPath %>" method="post">
+        <div>
+            <label for="firstName">Nombre</label>
+            <input type="text" name="firstName" value="Sven"/> 
+        </div>
+        <div>
+            <label for="lastName">Apellido</label>
+            <input type="text" name="lastName" value="Reno"/> 
+        </div>
+        <div>
+            <label for="email">email</label>
+            <input type="email" name="email" /> 
+        </div>
+        <div>
+            <input type="submit" name="create" value="Registrar" /> 
+        </div>
+    </form>
+</div>

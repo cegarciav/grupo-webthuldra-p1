@@ -1,0 +1,6 @@
+<% if (notice) { %>
+    <p><%= notice %></p>
+<% } else { %>
+    <h2><%= user.firstName %> <%= user.lastName %></h2>
+    <p>El email de <%= user.firstName %> es <%= user.email %></p>
+<% } %>

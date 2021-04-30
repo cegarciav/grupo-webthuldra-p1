@@ -30,7 +30,6 @@ router.get('root', '/', async (ctx) => {
     posts: rows,
     pagesArray,
     pagesAmount,
-    userPath: (id) => ctx.router.url('CREAR RUTA DE AUTOR', id),
     postPath: (id) => ctx.router.url('CREAR RUTA DE POST', id)
   });
 });
