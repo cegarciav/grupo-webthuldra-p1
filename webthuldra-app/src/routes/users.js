@@ -1,4 +1,5 @@
 const KoaRouter = require('koa-router');
+const { ValidationError } = require('sequelize');
 
 const router = new KoaRouter();
 
@@ -17,6 +18,13 @@ router.get('users.list', '/', async (ctx) => {
     });
   });
 
+router.get('users.new', '/new', async (ctx) => {
+  await ctx.render('users/new', {
+      errors: ValidationError.errors,
+      submitUserPath: ctx.router.url('users.create'),
+    });
+});
+
 router.get('users.show', '/:id', async (ctx) => {
   const {user} = ctx.state;
   await ctx.render('users/show', {
@@ -24,5 +32,18 @@ router.get('users.show', '/:id', async (ctx) => {
       notice: ctx.flashMessage.notice
     });
   });
+
+router.post('users.create', '/', async(ctx) => {
+  const user = ctx.orm.user.build(ctx.request.body);
+  try {
+    await user.save({ fields: ['lastName', 'firstName', 'email'] });
+    ctx.redirect(ctx.router.url('users.list'));
+  } catch (ValidationError) {
+    await ctx.render('users/new', {
+      errors: ValidationError.errors,
+      submitUserPath: ctx.router.url('users.create'),
+    });
+  }
+});
 
 module.exports = router;
