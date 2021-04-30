@@ -15,7 +15,8 @@ router.use((ctx, next) => {
                 queryOptions.page = +page;
             return ctx.router.url('root', {}, { query: queryOptions });
         },
-        userPath: (id) => id? ctx.router.url('users.show', id): '/'
+        userPath: (id) => id? ctx.router.url('users.show', id): '/',
+        postPath: (id) => id? ctx.router.url('posts.show', id): '/',
     };
     return next();
 });
