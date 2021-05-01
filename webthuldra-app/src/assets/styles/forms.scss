@@ -1,0 +1,63 @@
+@media only screen and (min-width: 800px) {
+    form {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    form {
+        width: 100%;
+    }
+}
+
+form {
+    background-color: azure;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px 20px;
+}
+
+input, label {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-user-name {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-user-name section {
+    width: 45%;
+    box-sizing: border-box;
+}
+
+.form-user-inputs {
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+    margin: 3vh 0;
+    height: 7vh;
+}
+
+.form-submit input {
+    background-color: #25559a;
+    border-radius: 10px;
+    width: 50%;
+    color: azure;
+    font-family: 'Cinzel';
+}
+
+.form-submit input:hover {
+    cursor: pointer;
+}
