@@ -16,7 +16,7 @@ module.exports = {
       {
         caption: "¡El día está perfecto para salir a patinar! Recuerden traer sus patines al lago, habitantes de Arendelle, porque lo congelaré a eso de las 17.00 hrs. ¡No olviden mantener distancia y usar una mascarilla!",
         media: "https://i.pinimg.com/originals/00/16/74/0016747655996706230638e919196f27.gif",
-        userId: 3,
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -33,6 +33,9 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return await queryInterface.bulkDelete('posts', null, {});
+    return await queryInterface.bulkDelete('posts', null, {
+      restartIdentity: true,
+      truncate: true
+    });
   }
 };
