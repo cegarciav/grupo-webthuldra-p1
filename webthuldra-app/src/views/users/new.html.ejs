@@ -1,7 +1,7 @@
-<div>
+<main>
     <% if (errors) { %>
         <div class="errors">
-            You need to fix the following errors:
+            Es necesario arreglar los siguientes errores:
             <ul>
                 <% errors.forEach(error => { %>
                     <li><%= error.message %></li>
@@ -10,20 +10,37 @@
         </div>
     <% } %>
     <form action="<%= submitUserPath %>" method="post">
-        <div>
-            <label for="firstName">Nombre</label>
-            <input type="text" name="firstName" value="Sven"/> 
-        </div>
-        <div>
-            <label for="lastName">Apellido</label>
-            <input type="text" name="lastName" value="Reno"/> 
-        </div>
-        <div>
-            <label for="email">email</label>
-            <input type="email" name="email" /> 
-        </div>
-        <div>
-            <input type="submit" name="create" value="Registrar" /> 
-        </div>
+        <h2>Nuevo usuario</h2>
+        <main class="form-user-inputs">
+            <section class="form-user-name">
+                <section>
+                    <label for="firstName">Nombre</label>
+                    <input type="text" name="firstName"/>
+                </section>
+                <section>
+                    <label for="lastName">Apellido</label>
+                    <input type="text" name="lastName"/> 
+                </section>
+            </section>
+            <section>
+                <label for="email">Email</label>
+                <input type="email" name="email" /> 
+            </section>
+            <section>
+                <label for="tag">Tag</label>
+                <input type="text" name="tag" /> 
+            </section>
+            <section>
+                <label for="description">Una pequeña descripción tuya</label>
+                <input type="text" name="description" /> 
+            </section>
+            <section>
+                <label for="picture">La url de tu foto</label>
+                <input type="url" name="picture" /> 
+            </section>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Registrar"/> 
+            </section>
+        </main>
     </form>
-</div>
+</main>
