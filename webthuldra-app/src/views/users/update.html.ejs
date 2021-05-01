@@ -1,0 +1,48 @@
+<main>
+    <% if (errors) { %>
+        <div class="errors">
+            Es necesario arreglar los siguientes errores:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+    <form action="<%= submitUserPath %> " method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <input type="hidden" name="id" value="<%= user.id %>"/>
+        <h2>Actualizar datos</h2>
+        <main class="form-user-inputs">
+            <section class="form-user-name">
+                <section>
+                    <label for="firstName">Nombre</label>
+                    <input type="text" name="firstName" value="<%= user.firstName %>"/>
+                </section>
+                <section>
+                    <label for="lastName">Apellido</label>
+                    <input type="text" name="lastName"  value="<%= user.lastName %>"/> 
+                </section>
+            </section>
+            <section>
+                <label for="email">Email</label>
+                <input type="email" name="email" value="<%= user.email %>"/> 
+            </section>
+            <section>
+                <label for="tag">Tag</label>
+                <input type="text" name="tag" value="<%= user.tag %>"/> 
+            </section>
+            <section>
+                <label for="description">Una pequeña descripción tuya</label>
+                <input type="text" name="description" value="<%= user.description %>"/> 
+            </section>
+            <section>
+                <label for="picture">La url de tu foto</label>
+                <input type="url" name="picture" value="<%= user.picture %>"/>
+            </section>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Actualizar"/> 
+            </section>
+        </main>
+    </form>
+</main>
