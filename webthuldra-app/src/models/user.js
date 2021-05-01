@@ -29,20 +29,24 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       validate: {
-        isEmail: true
+        isEmail: true,
+        notEmpty: true
       }
     },
     tag: {
       type: DataTypes.STRING,
+      defaultValue: ""
     },
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: ""
     },
     picture: {
       type: DataTypes.STRING,
       validate: {
         isUrl: true
-      }
+      },
+      defaultValue: "https://brighterwriting.com/wp-content/uploads/icon-user-default-420x420.png"
     }
   }, {
     sequelize,
