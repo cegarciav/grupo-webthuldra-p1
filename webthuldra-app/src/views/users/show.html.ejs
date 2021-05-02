@@ -1,9 +1,51 @@
-<% if (notice) { %>
-    <p><%= notice %></p>
-<% } else { %>
-    <h2><%= user.firstName %> <%= user.lastName %></h2>
-    <p>Usuario: @<%= user.tag %></p>
-    <p>Mail: <%= user.email %></p>
-    <img src="<%= user.image %>" alt="Imagen de perfil">
-    <p>Descripción: <%= user.description %></p>
-<% } %>
+<main>
+  <section class="header-content">
+    <figure class="profile-pic">
+      <img src=<%= user.picture %>>
+      <figcaption>
+        <h1><%= user.firstName + " " + user.lastName %></h1>
+        <h2><%= user.tag %> </h2>
+        <h4>"<%= user.description %> "</h4>
+      </figcaption>
+    </figure>
+    <a href=<%= updateUserPath(user.id) %> >
+      <i class="material-icons">edit</i>
+    </a>
+  </section>
+  <section id=section-one>
+    <h1>Publicaciones</h1>
+
+    <% userPosts.forEach(post => { %>
+      <article class="post">
+        <header>
+          <figure class="foto-usuario-post">
+            <a href=<%= userPath(user.id) %> >
+              <img src=<%= user.picture %>>
+            </a>
+              <figcaption class="info-usuario">
+                <a href=<%= userPath(user.id) %> >
+                  <h1><%= user.firstName + " " + user.lastName %> </h1>
+                </a>
+                <h2> <%= parseDate(post.createdAt) %>  </h2>
+              </figcaption>
+          </figure>
+        </header>
+        <main>
+          <section class="publicacion">
+            <%= post.caption %> 
+          </section>
+          <% if (post.media) { %>
+            <section class="foto-post">
+              <img src=<%= post.media %>>
+            </section>
+          <% }  %> 
+        </main>
+
+        <section class="botones">
+          <i class="material-icons">chat_bubble_outline</i>
+          <i class="material-icons">favorite_border</i> 
+        </section>
+      </article>
+    <% }); %> 
+  </section>
+</main>

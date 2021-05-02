@@ -1,24 +1,27 @@
-<% if (notice) { %>
-    <p><%= notice %></p>
-<% } %>
-
-<p>
-    Usuarios
-</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% usersList.forEach( (user) => { %>
-            <tr>
-                <td><a href=<%= userPath(user.id) %>><%= user.firstName %></a></td>
-                <td><%= user.lastName %></td>
-            </tr>
-        <% }) %>
-    </tbody>
-</table>
+<main>
+  <section class="sn-users-feed">
+    <% usersList.forEach(user => { %>
+      <article class="user">
+        <figure class="foto-usuario-post">
+          <a href=<%= userPath(user.id) %>>
+            <img src=<%= user.picture %>>
+          </a>
+          <figcaption class="info-usuario">
+            <a href=<%= userPath(user.id) %>>
+              <h1><%= user.firstName + " " + user.lastName %> </h1>
+            </a>
+          </figcaption>
+        </figure>
+      </article>
+    <% }); %>
+  </section>
+  <section class="sn-pagination">
+    <ul>
+      <li><a href=<%= usersPath() %>>&laquo;</a></li>
+      <% pagesArray.forEach(page => { %>
+        <li><a href=<%= usersPath(page) %>><%= page %></a></li>
+      <% }); %>
+      <li><a href=<%= usersPath(pagesAmount) %>>&raquo;</a></li>
+    </ul>
+  </section>
+</main>
