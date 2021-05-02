@@ -41,6 +41,7 @@ router.use((ctx, next) => {
         },
         newPostPath: () => ctx.router.url('posts.new'),
         updatePostPath: (id) => ctx.router.url('posts.update', id),
+        deletePostPath: (id) => ctx.router.url('posts.delete', id),
     };
     return next();
 });

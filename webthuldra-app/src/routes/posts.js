@@ -71,7 +71,7 @@ router.post('posts.create', '/', async(ctx) => {
     await post.save({ fields: [
       'caption', 
       'media', 
-      'userId'
+      'postId'
     ] });
     ctx.redirect(ctx.router.url('posts.list'));
   } catch (ValidationError) {
@@ -110,6 +110,63 @@ router.put('posts.modify', '/', async(ctx) => {
     await ctx.render('post/update', {
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
+    });
+  }
+});
+
+router.get('posts.update', '/:id/update', async(ctx) => {
+  const {post} = ctx.state;
+  await ctx.render('posts/update', {
+    post,
+    submitpostPath: ctx.router.url('posts.create'),
+    errors: ValidationError.errors
+  });
+});
+
+router.put('posts.modify', '/', async(ctx) => {
+  const postId = ctx.request.body.id;
+  delete ctx.request.body._method;
+  delete ctx.request.body.id;
+
+  const pictureUrl = ctx.request.body.picture;
+  if (!pictureUrl)
+    delete ctx.request.body.picture;
+
+  try {
+    const post = await ctx.orm.post.update(ctx.request.body, {
+      where: { id: postId }
+    });
+    ctx.redirect(ctx.router.url('posts.show', postId));
+  }
+  catch (ValidationError) {
+    await ctx.render('posts/update', {
+      errors: ValidationError.errors,
+      submitpostPath: ctx.router.url('posts.create'),
+    });
+  }
+});
+
+router.get('posts.delete', '/:id/delete', async(ctx) => {
+  const {post} = ctx.state;
+  await ctx.render('posts/delete', {
+    post,
+    submitpostPath: ctx.router.url('posts.create'),
+    errors: ValidationError.errors
+  });
+});
+
+router.delete('posts.remove', '/', async(ctx) => {
+  const postId = ctx.request.body.id;
+  
+  try {
+    const post = ctx.state.post = await ctx.orm.post.findByPk(postId);
+    post.destroy();
+    ctx.redirect(ctx.router.url('posts.list'));
+  }
+  catch (ValidationError) {
+    await ctx.render('posts/delete', {
+      errors: ValidationError.errors,
+      submitpostPath: ctx.router.url('posts.create'),
     });
   }
 });
