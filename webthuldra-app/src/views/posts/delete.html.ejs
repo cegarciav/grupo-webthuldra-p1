@@ -1,0 +1,16 @@
+<main>
+    <form action="<%= submitpostPath %>" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="hidden" name="id" value="<%= post.id %>"/>
+        <h2>Eliminar publicación</h2>
+        <main class="form-post-inputs">
+            <p>
+                Eliminar su publicación es una acción
+                irreversible. ¿Desea continuar?
+            </p>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Confirmar"/> 
+            </section>
+        </main>
+    </form>
+</main>
