@@ -33,14 +33,9 @@ router.use((ctx, next) => {
             return `${(day<10)?('0' + day): day}-${(month<10)?('0' + month): month}-${year}`;
         },
         postPath: (id) => id? ctx.router.url('posts.show', id): '/',
-        postsPath: (page) => {
-            let queryOptions = {};
-            if (page && page > 1)
-                queryOptions.page = +page;
-            return ctx.router.url('posts.list', {}, { query: queryOptions });
-        },
         newPostPath: () => ctx.router.url('posts.new'),
         updatePostPath: (id) => ctx.router.url('posts.update', id),
+        deletePostPath: (id) => ctx.router.url('posts.delete', id),
     };
     return next();
 });
