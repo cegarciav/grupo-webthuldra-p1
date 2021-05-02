@@ -1,16 +1,21 @@
 <main>
   <section class="header-content">
     <figure class="profile-pic">
-      <img src=<%= user.picture %>>
+      <img src="<%= user.picture %>">
       <figcaption>
         <h1><%= user.firstName + " " + user.lastName %></h1>
         <h2><%= user.tag %> </h2>
         <h4>"<%= user.description %> "</h4>
       </figcaption>
     </figure>
-    <a href=<%= updateUserPath(user.id) %> >
-      <i class="material-icons">edit</i>
-    </a>
+    <section class="user-update-delete">
+      <a href="<%= updateUserPath(user.id) %>" title="Eliminar perfil de usuario">
+        <i class="material-icons">edit</i>
+      </a>
+      <a href="<%= deleteUserPath(user.id) %>" title="Actualizar datos de usuario">
+        <i class="material-icons">delete_forever</i>
+      </a>
+    </section>
   </section>
   <section id=section-one>
     <h1>Publicaciones</h1>
@@ -19,11 +24,11 @@
       <article class="post">
         <header>
           <figure class="foto-usuario-post">
-            <a href=<%= userPath(user.id) %> >
-              <img src=<%= user.picture %>>
+            <a href="<%= userPath(user.id) %>">
+              <img src="<%= user.picture %>">
             </a>
               <figcaption class="info-usuario">
-                <a href=<%= userPath(user.id) %> >
+                <a href="<%= userPath(user.id) %>">
                   <h1><%= user.firstName + " " + user.lastName %> </h1>
                 </a>
                 <h2> <%= parseDate(post.createdAt) %>  </h2>
@@ -36,7 +41,7 @@
           </section>
           <% if (post.media) { %>
             <section class="foto-post">
-              <img src=<%= post.media %>>
+              <img src="<%= post.media %>">
             </section>
           <% }  %> 
         </main>
