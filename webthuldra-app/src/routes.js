@@ -24,6 +24,7 @@ router.use((ctx, next) => {
         },
         newUserPath: () => ctx.router.url('users.new'),
         updateUserPath: (id) => ctx.router.url('users.update', id),
+        deleteUserPath: (id) => ctx.router.url('users.delete', id),
         parseDate: (dateString) => {
             const dateObject = new Date(dateString);
             const day = dateObject.getDay();

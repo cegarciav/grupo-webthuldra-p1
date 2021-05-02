@@ -1,0 +1,16 @@
+<main>
+    <form action="<%= submitUserPath %>" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <input type="hidden" name="id" value="<%= user.id %>"/>
+        <h2>Eliminar datos de usuario</h2>
+        <main class="form-user-inputs">
+            <p>
+                Eliminar sus datos de usuario es una acción
+                irreversible. ¿Desea continuar?
+            </p>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Confirmar"/> 
+            </section>
+        </main>
+    </form>
+</main>
