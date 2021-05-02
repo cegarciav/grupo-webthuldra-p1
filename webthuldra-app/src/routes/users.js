@@ -67,6 +67,9 @@ router.post('users.create', '/', async(ctx) => {
   if (method && method === "put")
     ctx.redirect(ctx.router.url('users.modify'));
 
+  if (method && method === "delete")
+    ctx.redirect(ctx.router.url('users.remove'));
+
   const pictureUrl = ctx.request.body.picture;
   if (!pictureUrl)
     delete ctx.request.body.picture;
@@ -115,6 +118,31 @@ router.put('users.modify', '/', async(ctx) => {
   }
   catch (ValidationError) {
     await ctx.render('users/update', {
+      errors: ValidationError.errors,
+      submitUserPath: ctx.router.url('users.create'),
+    });
+  }
+});
+
+router.get('users.delete', '/:id/delete', async(ctx) => {
+  const {user} = ctx.state;
+  await ctx.render('users/delete', {
+    user,
+    submitUserPath: ctx.router.url('users.create'),
+    errors: ValidationError.errors
+  });
+});
+
+router.delete('users.remove', '/', async(ctx) => {
+  const userId = ctx.request.body.id;
+  
+  try {
+    const user = ctx.state.user = await ctx.orm.user.findByPk(userId);
+    user.destroy();
+    ctx.redirect(ctx.router.url('users.list'));
+  }
+  catch (ValidationError) {
+    await ctx.render('users/delete', {
       errors: ValidationError.errors,
       submitUserPath: ctx.router.url('users.create'),
     });
