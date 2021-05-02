@@ -1,7 +1,7 @@
-<div>
+<main>
     <% if (errors) { %>
         <div class="errors">
-            You need to fix the following errors:
+            Es necesario arreglar los siguientes errores:
             <ul>
                 <% errors.forEach(error => { %>
                     <li><%= error.message %></li>
@@ -10,20 +10,25 @@
         </div>
     <% } %>
     <form action="<%= submitPostPath %>" method="post">
-        <div>
-            <label for="caption">Comparte una publicación</label>
-            <input type="text" name="caption"/> 
-        </div>
-        <div>
-            <label for="media">Introduce una dirección de URL con la imagen que quieras adjuntar</label>
-            <input type="url" name="media"/> 
-        </div>
-        <div>
-            <label for="email">Escribe el id de tu usuario</label>
-            <input type="email" name="email" /> 
-        </div>
-        <div>
-            <input type="submit" name="create" value="Registrar" /> 
-        </div>
+        <h2>Nueva publicación</h2>
+        <main class="form-post-inputs">
+            <section class="form-post-caption">
+                <section>
+                    <label for="caption">Comparte una publicación</label>
+                    <input type="text" name="caption"/> 
+                </section>
+            </section>
+            <section>
+                <label for="media">La url de la foto que quieras compartir</label>
+                <input type="url" name="media"/> 
+            </section>
+            <section>
+                <label for="userId">Escribe el id de tu usuario</label>
+                <input type="number" name="userId" /> 
+            </section>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Registrar"/> 
+            </section>
+        </main>
     </form>
-</div>
+</main>

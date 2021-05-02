@@ -1,0 +1,32 @@
+<main>
+    <% if (errors) { %>
+        <div class="errors">
+            Es necesario arreglar los siguientes errores:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+    <form action="<%= submitPostPath %> " method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <input type="hidden" name="id" value="<%= post.id %>"/>
+        <h2>Actualizar datos</h2>
+        <main class="form-post-inputs">
+            <section class="form-post-caption">
+                <section>
+                    <label for="caption">Edita tu publicación</label>
+                    <input type="text" name="caption" value="<%= post.caption %>"/>
+                </section>
+            </section>
+            <section>
+                <label for="media">Cambia o agrega la url de la foto que quieras compartir</label>
+                <input type="url" name="media" value="<%= post.media %>"/> 
+            </section>
+            <section class="form-submit">
+                <input type="submit" name="create" value="Actualizar"/> 
+            </section>
+        </main>
+    </form>
+</main>
