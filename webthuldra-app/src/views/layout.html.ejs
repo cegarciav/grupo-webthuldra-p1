@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webthuldra</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<%= assetPath('app.css') %>">
   </head>
 
@@ -13,22 +12,16 @@
       <nav> <!--Sirve para crear secciones o agrupar contenidos.-->
         <ul>
           <li id="logo">
-            <a href=<%= rootPath() %> >
+            <a href="<%= rootPath() %>">
               <img src="<%= assetPath('webthuldra_logo.png') %>" alt="Ícono de un copo de nieve.">
               Webthuldra
             </a>
           </li>
           <li>
-            <a href=<%= usersPath() %>>Usuarios</a>
+            <a href="<%= usersPath() %>">Usuarios</a>
           </li>
           <li>
-            <a href=<%= newUserPath() %> >Crear Usuario</a>
-          </li>
-          <li>
-            <a href= <%= userPath() + "#section-one" %>>Mis Publicaciones</a>
-          </li>
-          <li>
-            <a href="#">Cerrar Sesión</a>
+            <a href="<%= newUserPath() %>">Crear Usuario</a>
           </li>
         </ul>
       </nav>
@@ -38,7 +31,7 @@
     <footer>
       <ul>
         <li>Webthuldra &copy; 2021</li>
-        <li><a href="#">Sign Up</a></li>
+        <li><a href="<%= newUserPath() %>">Sign Up</a></li>
         <li><a href="#">Log In</a></li>
       </ul>
     </footer>

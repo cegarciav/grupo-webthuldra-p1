@@ -12,6 +12,12 @@
   justify-content: space-between;
 }
 
+.user-update-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .profile-pic {
   display: flex;
   align-items: flex-start;
