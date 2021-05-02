@@ -1,7 +1,38 @@
 <% if (notice) { %>
     <p><%= notice %></p>
 <% } else { %>
-    <h2><%= post.caption %></h2>
-    <p>Publicado por usuario de id <%= post.userId %></p>
-    <img src="<%= post.media %>" alt="Imagen de publicación">
+    <main>
+        <section>
+            <article class="post">
+                <header>
+                    <figure class="foto-usuario-post">
+                        <a href="<%= userPath(post.user.id) %>">
+                            <img src="<%= post.user.picture %>">
+                        </a>
+                        <figcaption class="info-usuario">
+                            <a href="<%= userPath(post.user.id) %>">
+                                <h1><%= post.user.firstName + " " + post.user.lastName %> </h1>
+                            </a>
+                            <h2>#<%= post.user.tag %></h2>
+                        </figcaption>
+                    </figure>
+                </header>
+                <main>
+                    <section class="publicacion">
+                        <%= post.caption %>
+                    </section>
+                    <% if (post.media) { %>
+                        <section class="foto-post">
+                            <img src="<%= post.media%>">
+                        </section>
+                    <% } %>
+                </main>
+
+                <section class="botones">
+                    <i class="material-icons">chat_bubble_outline</i>
+                    <i class="material-icons">favorite_border</i> 
+                </section>
+            </article>
+        </section>
+    </main>
 <% } %>

@@ -29,8 +29,7 @@ router.get('root', '/', async (ctx) => {
   await ctx.render('index', {
     posts: rows,
     pagesArray,
-    pagesAmount,
-    postPath: (id) => ctx.router.url('CREAR RUTA DE POST', id)
+    pagesAmount
   });
 });
 
