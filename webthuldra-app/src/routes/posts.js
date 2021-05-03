@@ -12,7 +12,9 @@ router.param('id', async (id, ctx, next) => {
 });
 
 router.get('posts.new', '/new', async (ctx) => {
+  const user = await ctx.orm.user.findAll()
   await ctx.render('posts/new', {
+      userList: user,
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
     });
@@ -43,7 +45,7 @@ router.post('posts.create', '/', async(ctx) => {
     await post.save({ fields: [
       'caption', 
       'media', 
-      'postId'
+      'userId'
     ] });
     ctx.redirect(ctx.router.url('root'));
   } catch (ValidationError) {
