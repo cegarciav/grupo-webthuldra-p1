@@ -21,6 +21,12 @@
         <section class="botones">
           <i class="material-icons">chat_bubble_outline</i>
           <i class="material-icons">favorite_border</i> 
+          <a href="<%= updatePostPath(post.id) %>" title="Editar publicación">
+            <i class="material-icons">edit</i>
+          </a>
+          <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
+              <i class="material-icons">delete_forever</i>
+          </a>
         </section>
       </article>
     <% }); %>
