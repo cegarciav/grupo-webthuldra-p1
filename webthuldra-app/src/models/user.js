@@ -45,8 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isUrl: true
-      },
-      defaultValue: "https://brighterwriting.com/wp-content/uploads/icon-user-default-420x420.png"
+      }
     }
   }, {
     sequelize,

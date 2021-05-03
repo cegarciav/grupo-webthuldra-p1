@@ -1,7 +1,7 @@
 <main>
   <section class="header-content">
     <figure class="profile-pic">
-      <img src="<%= user.picture %>">
+      <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
       <figcaption>
         <h1><%= user.firstName + " " + user.lastName %></h1>
         <h2><%= user.tag %> </h2>
@@ -25,7 +25,7 @@
         <header>
           <figure class="foto-usuario-post">
             <a href="<%= userPath(user.id) %>">
-              <img src="<%= user.picture %>">
+              <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
             </a>
               <figcaption class="info-usuario">
                 <a href="<%= userPath(user.id) %>">
@@ -49,9 +49,12 @@
         <section class="botones">
           <i class="material-icons">chat_bubble_outline</i>
           <i class="material-icons">favorite_border</i> 
-          <a href="<%= updatePostPath(post.id) %>">
+          <a href="<%= updatePostPath(post.id) %>" title="Actualizar datos de usuario">
             <i class="material-icons">edit</i>
-          </a>
+        </a>
+          <a href="<%= deletePostPath(post.id) %>" title="Eliminar perfil de usuario">
+            <i class="material-icons">delete_forever</i>
+        </a>
         </section>
       </article>
     <% }); %> 
