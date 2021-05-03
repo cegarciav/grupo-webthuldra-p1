@@ -23,8 +23,12 @@
                 <input type="url" name="media"/> 
             </section>
             <section>
-                <label for="userId">Escribe el id de tu usuario</label>
-                <input type="number" name="userId" /> 
+                <label for="userId">Ingrese el id de su usuario</label>
+                <select name="userId">
+                    <% userList.forEach(user => { %>
+                        <option value= "<%= user.id %>"" ><%=user.firstName + " " + user.lastName %></option>
+                    <% }); %>
+                 </select>
             </section>
             <section class="form-submit">
                 <input type="submit" name="create" value="Registrar"/> 
