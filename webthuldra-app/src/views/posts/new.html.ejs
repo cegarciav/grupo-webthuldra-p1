@@ -24,12 +24,10 @@
             </section>
             <section>
                 <label for="userId">Ingrese el id de su usuario</label>
-                
                 <select name="userId">
                     <% userList.forEach(user => { %>
                         <option value= "<%= user.id %>"" ><%=user.firstName + " " + user.lastName %></option>
                     <% }); %>
-            
                  </select>
             </section>
             <section class="form-submit">
