@@ -4,7 +4,7 @@
       <article class="user">
         <figure class="foto-usuario-post">
           <a href="<%= userPath(user.id) %>">
-            <img src="<%= user.picture %>">
+            <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
           </a>
           <figcaption class="info-usuario">
             <a href="<%= userPath(user.id) %>">

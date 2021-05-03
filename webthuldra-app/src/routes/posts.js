@@ -72,7 +72,7 @@ router.put('posts.modify', '/', async(ctx) => {
 
   const mediaUrl = ctx.request.body.media;
   if (!mediaUrl)
-    delete ctx.request.body.media;
+    ctx.request.body.media = null;
 
   try {
     const post = await ctx.orm.post.update(ctx.request.body, {
@@ -95,29 +95,6 @@ router.get('posts.update', '/:id/update', async(ctx) => {
     submitpostPath: ctx.router.url('posts.create'),
     errors: ValidationError.errors
   });
-});
-
-router.put('posts.modify', '/', async(ctx) => {
-  const postId = ctx.request.body.id;
-  delete ctx.request.body._method;
-  delete ctx.request.body.id;
-
-  const pictureUrl = ctx.request.body.picture;
-  if (!pictureUrl)
-    delete ctx.request.body.picture;
-
-  try {
-    const post = await ctx.orm.post.update(ctx.request.body, {
-      where: { id: postId }
-    });
-    ctx.redirect(ctx.router.url('posts.show', postId));
-  }
-  catch (ValidationError) {
-    await ctx.render('posts/update', {
-      errors: ValidationError.errors,
-      submitpostPath: ctx.router.url('posts.create'),
-    });
-  }
 });
 
 router.get('posts.delete', '/:id/delete', async(ctx) => {

@@ -108,7 +108,7 @@ router.put('users.modify', '/', async(ctx) => {
 
   const pictureUrl = ctx.request.body.picture;
   if (!pictureUrl)
-    delete ctx.request.body.picture;
+    ctx.request.body.picture = null;
 
   try {
     const user = await ctx.orm.user.update(ctx.request.body, {
