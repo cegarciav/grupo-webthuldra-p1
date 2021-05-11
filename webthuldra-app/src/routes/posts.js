@@ -12,8 +12,10 @@ router.param('id', async (id, ctx, next) => {
 });
 
 router.get('posts.new', '/new', async (ctx) => {
-  const user = await ctx.orm.user.findAll()
+  const user = await ctx.orm.user.findAll();
+  const post = ctx.orm.post.build();
   await ctx.render('posts/new', {
+      post,
       userList: user,
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
@@ -50,6 +52,7 @@ router.post('posts.create', '/', async(ctx) => {
     ctx.redirect(ctx.router.url('root'));
   } catch (ValidationError) {
     await ctx.render('posts/new', {
+      post,
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
     });

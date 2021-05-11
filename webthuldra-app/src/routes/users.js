@@ -42,7 +42,9 @@ router.get('users.list', '/', async (ctx) => {
 });
 
 router.get('users.new', '/new', async (ctx) => {
+  const user = ctx.orm.user.build();
   await ctx.render('users/new', {
+      user,
       errors: ValidationError.errors,
       submitUserPath: ctx.router.url('users.create'),
     });
@@ -86,6 +88,7 @@ router.post('users.create', '/', async(ctx) => {
     ctx.redirect(ctx.router.url('users.list'));
   } catch (ValidationError) {
     await ctx.render('users/new', {
+      user,
       errors: ValidationError.errors,
       submitUserPath: ctx.router.url('users.create'),
     });
