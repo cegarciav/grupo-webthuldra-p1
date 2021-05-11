@@ -4,7 +4,7 @@ const { ValidationError } = require('sequelize');
 const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
-  ctx.state.user = await ctx.orm.user.findByPk(ctx.params.id);
+  ctx.state.user = await ctx.orm.user.findByPk(ctx.params.id, { include: ctx.orm.post});
   if (!ctx.state.user) ctx.throw(404);
   return next();
 });
@@ -52,14 +52,8 @@ router.get('users.new', '/new', async (ctx) => {
 
 router.get('users.show', '/:id', async (ctx) => {
   const {user} = ctx.state;
-  const userPosts = await ctx.orm.post.findAll({
-    where: {
-      userId: user.id
-    }
-  });
   await ctx.render('users/show', {
       user,
-      userPosts,
       notice: ctx.flashMessage.notice
     });
   });
