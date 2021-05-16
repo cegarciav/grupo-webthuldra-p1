@@ -17,6 +17,19 @@
               Webthuldra
             </a>
           </li>
+          <li class="user-controls">
+            <% if (locals.currentUser) { %>
+              <span><%= currentUser.tag%></span>
+
+              <form action="<%= paths.destroySession %>" method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <input type="submit" value="Cerrar Sesión" />
+              </form>
+            <% } else {%>
+              <a href="<%= paths.newSession%>">Iniciar Sesión</a>
+            <% } %>
+
+          </li>
           <li>
             <a href="<%= usersPath() %>">Usuarios</a>
           </li>

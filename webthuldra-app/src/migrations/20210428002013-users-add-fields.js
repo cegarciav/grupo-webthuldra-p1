@@ -33,6 +33,17 @@ module.exports = {
           Sequelize.STRING,
           { transaction: t }
         ),
+        queryInterface.addColumn(
+          "users",
+          "password",
+          {
+            type: Sequelize.STRING,
+            validate: {
+              notEmpty: true,
+            }
+          },
+          { transaction: t }
+        ),
       ])
     });
   },
@@ -59,6 +70,11 @@ module.exports = {
         queryInterface.removeColumn(
           "users",
           "description",
+          { transaction: t }
+        ),
+        queryInterface.removeColumn(
+          "users",
+          "password",
           { transaction: t }
         )
       ])
