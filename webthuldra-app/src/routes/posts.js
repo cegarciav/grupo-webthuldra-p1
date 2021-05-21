@@ -1,7 +1,10 @@
 const KoaRouter = require('koa-router');
 const { ValidationError } = require('sequelize');
+const { checkUser } = require('../middlewares/checkUser');
 
 const router = new KoaRouter();
+
+router.use(checkUser);
 
 router.param('id', async (id, ctx, next) => {
   ctx.state.post = await ctx.orm.post.findByPk(ctx.params.id, {include: ctx.orm.user}) 
@@ -89,15 +92,6 @@ router.put('posts.modify', '/', async(ctx) => {
       submitPostPath: ctx.router.url('posts.create'),
     });
   }
-});
-
-router.get('posts.update', '/:id/update', async(ctx) => {
-  const {post} = ctx.state;
-  await ctx.render('posts/update', {
-    post,
-    submitpostPath: ctx.router.url('posts.create'),
-    errors: ValidationError.errors
-  });
 });
 
 router.get('posts.delete', '/:id/delete', async(ctx) => {

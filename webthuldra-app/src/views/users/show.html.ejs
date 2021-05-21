@@ -8,55 +8,69 @@
         <h4>"<%= user.description %> "</h4>
       </figcaption>
     </figure>
-    <section class="user-update-delete">
-      <a href="<%= updateUserPath(user.id) %>" title="Actualizar datos de usuario">
-        <i class="material-icons">edit</i>
-      </a>
-      <a href="<%= deleteUserPath(user.id) %>" title="Eliminar perfil de usuario">
-        <i class="material-icons">delete_forever</i>
-      </a>
-    </section>
+
+    <% if (locals.currentUser) { %>
+      <section class="user-update-delete">
+        <a href="<%= updateUserPath(user.id) %>" title="Actualizar datos de usuario">
+          <i class="material-icons">edit</i>
+        </a>
+        <a href="<%= deleteUserPath(user.id) %>" title="Eliminar perfil de usuario">
+          <i class="material-icons">delete_forever</i>
+        </a>
+      </section>
+    <% } %>
+
   </section>
   <section id=section-one>
     <h1>Publicaciones</h1>
 
-    <% user.posts.forEach(post => { %>
-      <article class="post">
-        <header>
-          <figure class="foto-usuario-post">
-            <a href="<%= userPath(user.id) %>">
-              <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
-            </a>
-              <figcaption class="info-usuario">
-                <a href="<%= userPath(user.id) %>">
-                  <h1><%= user.firstName + " " + user.lastName %> </h1>
-                </a>
-                <h2> <%= parseDate(post.createdAt) %>  </h2>
-              </figcaption>
-          </figure>
-        </header>
-        <main>
-          <section class="publicacion">
-            <%= post.caption %> 
-          </section>
-          <% if (post.media) { %>
-            <section class="foto-post">
-              <img src="<%= post.media %>">
+    <%if (locals.currentUser) { %>
+      <% user.posts.forEach(post => { %>
+        <article class="post">
+          <header>
+            <figure class="foto-usuario-post">
+              <a href="<%= userPath(user.id) %>">
+                <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
+              </a>
+                <figcaption class="info-usuario">
+                  <a href="<%= userPath(user.id) %>">
+                    <h1><%= user.firstName + " " + user.lastName %> </h1>
+                  </a>
+                  <h2> <%= parseDate(post.createdAt) %>  </h2>
+                </figcaption>
+            </figure>
+          </header>
+          <main>
+            <section class="publicacion">
+              <%= post.caption %> 
             </section>
-          <% }  %> 
-        </main>
+            <% if (post.media) { %>
+              <section class="foto-post">
+                <img src="<%= post.media %>">
+              </section>
+            <% }  %> 
+          </main>
 
-        <section class="botones">
-          <i class="material-icons">chat_bubble_outline</i>
-          <i class="material-icons">favorite_border</i> 
-          <a href="<%= updatePostPath(post.id) %>" title="Actualizar datos de usuario">
-            <i class="material-icons">edit</i>
-        </a>
-          <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
-            <i class="material-icons">delete_forever</i>
-        </a>
-        </section>
-      </article>
-    <% }); %> 
+          <section class="botones">
+            <i class="material-icons">chat_bubble_outline</i>
+            <i class="material-icons">favorite_border</i> 
+            <a href="<%= updatePostPath(post.id) %>" title="Actualizar datos de usuario">
+              <i class="material-icons">edit</i>
+            </a>
+            <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
+              <i class="material-icons">delete_forever</i>
+            </a>
+          </section>
+
+        </article>
+      <% }); %> 
+
+      <% } else { %>
+        <article class="no-disponible">
+          <main>
+            <h2>Inicia sesión para ver las publicaciones de <%= user.firstName %> :)</h2>
+          </main>
+        </article>
+      <% } %>
   </section>
 </main>
