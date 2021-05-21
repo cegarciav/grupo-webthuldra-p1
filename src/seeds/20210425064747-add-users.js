@@ -20,6 +20,7 @@ module.exports = {
         picture: "https://www.parati.com.ar/wp-content/uploads/2020/02/FROZEN-ELSA-OSCARS-DESTACADA-GENTILEZA-DISNEY.jpg",
         description: "Libre soy...",
         tag: "elsafreski",
+        password: "frozen",
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -30,6 +31,7 @@ module.exports = {
         picture: "https://lumiere-a.akamaihd.net/v1/images/ct_frozen_anna_18466_6775584b.jpeg?region=0,0,600,600",
         description: "Love is an open door",
         tag: "AnnaHugs",
+        password: "kristoffmiam0r",
         createdAt: new Date(),
         updatedAt: new Date()
       }

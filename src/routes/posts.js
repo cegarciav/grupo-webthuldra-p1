@@ -7,14 +7,14 @@ router.param('id', async (id, ctx, next) => {
   ctx.state.post = await ctx.orm.post.findByPk(ctx.params.id, {include: ctx.orm.user}) 
   if (!ctx.state.post) ctx.throw(404);
   return next();
-  
-
 });
 
 router.get('posts.new', '/new', async (ctx) => {
-  const user = await ctx.orm.user.findAll()
+  const userList = await ctx.orm.user.findAll();
+  const post = ctx.orm.post.build();
   await ctx.render('posts/new', {
-      userList: user,
+      post,
+      userList,
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
     });
@@ -49,7 +49,10 @@ router.post('posts.create', '/', async(ctx) => {
     ] });
     ctx.redirect(ctx.router.url('root'));
   } catch (ValidationError) {
+    const userList = await ctx.orm.user.findAll();
     await ctx.render('posts/new', {
+      post,
+      userList,
       errors: ValidationError.errors,
       submitPostPath: ctx.router.url('posts.create'),
     });

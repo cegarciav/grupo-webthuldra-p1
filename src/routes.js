@@ -3,6 +3,7 @@ const KoaRouter = require('koa-router');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
+const session = require('./routes/session');
 
 const router = new KoaRouter();
 
@@ -40,8 +41,26 @@ router.use((ctx, next) => {
     return next();
 });
 
+router.use(async(ctx, next) => {
+    if (ctx.session.currentUserId) {
+        ctx.state.currentUser = await ctx.orm.user.findByPk(ctx.session.currentUserId)
+    }
+    return next();
+});
+
+router.use(async (ctx, next) =>{
+    Object.assign(ctx.state, {
+        paths: {
+            destroySession: ctx.router.url('session.destroy'),
+            newSession: ctx.router.url('session.new'),
+        }
+    });
+    return next();
+});
+
 router.use('/', index.routes());
 router.use('/users', users.routes());
 router.use('/posts', posts.routes());
+router.use('/session', session.routes());
 
 module.exports = router;
