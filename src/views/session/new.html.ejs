@@ -1,24 +1,26 @@
-<form action="<%= submitPath %>" method="post">
-    <% if (locals.error) { %>
-        <div class="error"><%= error %></div>
-    <% } %>
+<main>
+    <form action="<%= submitPath %>" method="post">
+        <% if (locals.error) { %>
+            <div class="error"><%= error %></div>
+        <% } %>
 
-    <h2>Inicia sesión</h2>
+        <h2>Inicia sesión</h2>
 
-    <main class="form-session-inputs">
-        
-    <section class="form-session-email">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" value="<%= locals.email %>" />
-    </section>
-    <section class="form-session-password">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" />
-    </section>
+        <main class="form-session-inputs">
 
-    <section class="form-submit">
-        <input type="submit" value="Iniciar sesión" />
-    </section>
+        <section class="form-session-email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" value="<%= locals.email %>" />
+        </section>
+        <section class="form-session-password">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" />
+        </section>
 
-    </main>
-</form>
+        <section class="form-submit">
+            <input type="submit" value="Iniciar sesión" />
+        </section>
+
+        </main>
+    </form>
+</main>

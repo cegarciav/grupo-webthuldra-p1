@@ -19,11 +19,9 @@
           </li>
           <li class="user-controls">
             <% if (locals.currentUser) { %>
-              <span><%= currentUser.tag%></span>
-
-              <form action="<%= paths.destroySession %>" method="post">
+              <form action="<%= paths.destroySession %>" method="post" class="navbar-form">
                 <input type="hidden" name="_method" value="delete" />
-                <input type="submit" value="Cerrar Sesión" />
+                <button type="submit">Cerrar Sesión (<%= currentUser.tag%>)</button>
               </form>
             <% } else {%>
               <a href="<%= paths.newSession%>">Iniciar Sesión</a>
