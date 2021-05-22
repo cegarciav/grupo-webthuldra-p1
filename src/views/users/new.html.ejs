@@ -15,28 +15,28 @@
             <section class="form-user-name">
                 <section>
                     <label for="firstName">Nombre</label>
-                    <input type="text" name="firstName"/>
+                    <input type="text" name="firstName" value="<%= user.firstName %>" />
                 </section>
                 <section>
                     <label for="lastName">Apellido</label>
-                    <input type="text" name="lastName"/> 
+                    <input type="text" name="lastName"value="<%= user.lastName %>" />
                 </section>
             </section>
             <section>
                 <label for="email">Email</label>
-                <input type="email" name="email" /> 
+                <input type="email" name="email" value="<%= user.email %>" /> 
             </section>
             <section>
                 <label for="tag">Tag</label>
-                <input type="text" name="tag" /> 
+                <input type="text" name="tag" value="<%= user.tag %>" /> 
             </section>
             <section>
                 <label for="description">Una pequeña descripción tuya</label>
-                <input type="text" name="description" /> 
+                <input type="text" name="description" value="<%= user.description %>" />  
             </section>
             <section>
                 <label for="picture">La url de tu foto</label>
-                <input type="url" name="picture" /> 
+                <input type="url" name="picture" value="<%= user.picture %>" />  
             </section>
             <section class="form-submit">
                 <input type="submit" name="create" value="Registrar"/> 

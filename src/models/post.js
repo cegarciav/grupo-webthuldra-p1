@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class post extends Model {
     /**
@@ -10,18 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.user)
+      this.belongsTo(models.user);
     }
-  };
+  }
   post.init({
     caption: DataTypes.STRING,
     media: {
       type: DataTypes.STRING,
       validate: {
-        isUrl: true
-      }
+        isUrl: true,
+      },
     },
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'post',
