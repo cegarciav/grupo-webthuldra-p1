@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.post)
     }
+
+    getFullName() {
+      return `${this.firstName} ${this.lastName}`;
+    }
   };
   user.init({
     firstName: {
