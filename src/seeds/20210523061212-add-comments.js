@@ -9,17 +9,24 @@ module.exports = {
    * }], {});
   */
   up: async (queryInterface) => {
-    const postsElsa = [
+    const commentsPost1 = [
       {
-        caption: '¡El día está perfecto para salir a patinar! Recuerden traer sus patines al lago, habitantes de Arendelle, porque lo congelaré a eso de las 17.00 hrs. ¡No olviden mantener distancia y usar una mascarilla!',
-        media: 'https://i.pinimg.com/originals/00/16/74/0016747655996706230638e919196f27.gif',
+        content: '¡Pero qué buen panorama!',
+        userId: 2,
+        postId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        content: '¡Nos vemos pronto!',
         userId: 1,
+        postId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
     ];
 
-    return queryInterface.bulkInsert('posts', postsElsa, {});
+    return queryInterface.bulkInsert('comments', commentsPost1, {});
   },
 
   /**
@@ -29,7 +36,7 @@ module.exports = {
    * await queryInterface.bulkDelete('People', null, {});
    */
   down: async (queryInterface) => queryInterface
-    .bulkDelete('posts', null, {
+    .bulkDelete('comments', null, {
       restartIdentity: true,
       truncate: true,
       cascade: true,
