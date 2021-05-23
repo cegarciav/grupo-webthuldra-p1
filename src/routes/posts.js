@@ -5,6 +5,12 @@ const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
   ctx.state.post = await ctx.orm.post.findByPk(id, { include: ctx.orm.user });
+  ctx.state.comments = await ctx.orm.comment.findAll({
+    where: {
+      postId: id,
+    },
+    include: ctx.orm.user,
+  });
   if (!ctx.state.post) ctx.throw(404);
   return next();
 });
@@ -21,9 +27,13 @@ router.get('posts.new', '/new', async (ctx) => {
 });
 
 router.get('posts.show', '/:id', async (ctx) => {
-  const { post } = ctx.state;
+  const { post, comments } = ctx.state;
   await ctx.render('posts/show', {
     post,
+    comments,
+    submitCommentPath: ctx.router.url('comments.create'),
+    updateCommentPath: (id) => (id ? ctx.router.url('comments.update', id) : '/'),
+    deleteCommentPath: (id) => (id ? ctx.router.url('comments.delete', id) : '/'),
     notice: ctx.flashMessage.notice,
   });
 });
