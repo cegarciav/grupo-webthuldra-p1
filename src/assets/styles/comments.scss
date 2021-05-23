@@ -1,0 +1,51 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments h3 {
+    border-bottom: solid 1px #25559a;
+}
+
+.single-comment {
+    display: flex;
+    flex-direction: row;
+}
+
+.single-comment figure {
+    width: 10%;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.comment-user-picture a {
+    width: 100%;
+}
+
+.comment-user-picture img {
+    width: 100%;
+    height: 40%;
+    border-radius: 50%;
+}
+
+.comment-text {
+    margin: 0;
+    width: 85%;
+    padding: 1%;
+    word-wrap: break-word;
+}
+
+.new-comment form {
+    padding: 0;
+    width: 100%;
+}
+
+.new-comment .comment-text {
+    width: 90%;
+}
+
+.single-comment-buttons {
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+}
