@@ -3,6 +3,7 @@ const KoaRouter = require('koa-router');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
+const comments = require('./routes/comments');
 const session = require('./routes/session');
 
 const router = new KoaRouter();
@@ -63,6 +64,7 @@ router.use(async (ctx, next) => {
 router.use('/', index.routes());
 router.use('/users', users.routes());
 router.use('/posts', posts.routes());
+router.use('/comments', comments.routes());
 router.use('/session', session.routes());
 
 module.exports = router;
