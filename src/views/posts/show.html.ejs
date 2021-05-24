@@ -1,44 +1,79 @@
-<% if (notice) { %>
-    <p><%= notice %></p>
-<% } else { %>
-    <main>
-        <section>
-            <article class="post">
-                <header>
-                    <figure class="foto-usuario-post">
-                        <a href="<%= userPath(post.user.id) %>">
-                            <img src="<%= post.user.picture? post.user.picture: assetPath('default_profile_picture.png') %>">
-                        </a>
-                        <figcaption class="info-usuario">
-                            <a href="<%= userPath(post.user.id) %>">
-                                <h1><%= post.user.firstName + " " + post.user.lastName %> </h1>
-                            </a>
-                            <h2>@<%= post.user.tag %></h2>
-                        </figcaption>
-                    </figure>
-                </header>
-                <main>
-                    <section class="publicacion">
-                        <%= post.caption %>
-                    </section>
-                    <% if (post.media) { %>
-                        <section class="foto-post">
-                            <img src="<%= post.media%>">
-                        </section>
-                    <% } %>
-                </main>
-
-                <section class="botones">
-                    <i class="material-icons">chat_bubble_outline</i>
-                    <i class="material-icons">favorite_border</i>
-                    <a href="<%= updatePostPath(post.id) %>" title="Editar publicación">
-                        <i class="material-icons">edit</i>
-                    </a>
-                    <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
-                        <i class="material-icons">delete_forever</i>
-                    </a>
-                </section>
-            </article>
+<main>
+  <section>
+    <article class="post">
+      <header>
+        <figure class="foto-usuario-post">
+          <a href="<%= userPath(post.user.id) %>">
+            <img src="<%= post.user.picture? post.user.picture: assetPath('default_profile_picture.png') %>">
+          </a>
+          <figcaption class="info-usuario">
+            <a href="<%= userPath(post.user.id) %>">
+              <h1><%= post.user.firstName + " " + post.user.lastName %> </h1>
+            </a>
+            <h2>@<%= post.user.tag %></h2>
+          </figcaption>
+        </figure>
+      </header>
+      <main>
+        <section class="publicacion">
+          <%= post.caption %>
         </section>
-    </main>
-<% } %>
+        <% if (post.media) { %>
+          <section class="foto-post">
+            <img src="<%= post.media%>">
+          </section>
+        <% } %>
+      </main>
+
+      <section class="botones">
+        <i class="material-icons">favorite_border</i>
+        <a href="<%= updatePostPath(post.id) %>" title="Editar publicación">
+          <i class="material-icons">edit</i>
+        </a>
+        <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
+          <i class="material-icons">delete_forever</i>
+        </a>
+      </section>
+      <section class="comments">
+        <h3>Comentarios</h3>
+        <% comments.forEach(comment => { %>
+          <article class="single-comment">
+            <figure class="comment-user-picture">
+              <a href="<%= userPath(comment.user.id) %>">
+                <img src="<%= comment.user.picture? comment.user.picture: assetPath('default_profile_picture.png') %>">
+              </a>
+            </figure>
+            <p class="comment-text">
+              <%= comment.content %>
+            </p>
+            <section class="single-comment-buttons">
+              <% if (locals.currentUser && locals.currentUser.id === comment.user.id) { %>
+                <a href="<%= updateCommentPath(comment.id) %>" title="Editar commentario">
+                  <i class="material-icons">edit</i> 
+                </a>
+                <a href="<%= deleteCommentPath(comment.id) %>" title="Eliminar comentario">
+                  <i class="material-icons">close</i>
+                </a>
+              <% } %>
+            </section>
+          </article>
+        <% }); %>
+      </section>
+      <% if (locals.currentUser) { %>
+        <section class="new-comment">
+          <form action="<%= submitCommentPath %>" method="post">
+            <article class="single-comment">
+              <figure class="comment-user-picture">
+                <a href="<%= userPath(locals.currentUser.id) %>">
+                  <img src="<%= locals.currentUser.picture? locals.currentUser.picture: assetPath('default_profile_picture.png') %>">
+                </a>
+              </figure>
+              <input type="text" name="content" class="comment-text"/>
+              <input type="hidden" name="postId" value="<%= post.id %> "/>
+            </article>
+          </form>
+        </section>
+      <% } %>
+    </article>
+  </section>
+</main>
