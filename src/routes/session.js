@@ -11,7 +11,7 @@ router.get('session.new', '/new', (ctx) => ctx.render(
 router.post('session.create', '/', async (ctx) => {
   const { email, password } = ctx.request.body;
   const user = await ctx.orm.user.findOne({ where: { email } });
-  const authenticated = user && user.checkPassword(password);
+  const authenticated = user && await user.checkPassword(password);
 
   if (user && authenticated) {
     ctx.session.currentUserId = user.id;
