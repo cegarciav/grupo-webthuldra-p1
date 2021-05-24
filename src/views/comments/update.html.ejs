@@ -1,0 +1,26 @@
+<main>
+  <% if (notice) { %>
+    <div class="errors">
+      Es necesario arreglar los siguientes errores:
+      <ul>
+        <% notice.forEach(error => { %>
+            <li><%= error.message %></li>
+        <% }); %>
+      </ul>
+    </div>
+  <% } %>
+  <form action="<%= submitCommentPath %> " method="post">
+    <input type="hidden" name="_method" value="put"/>
+    <input type="hidden" name="id" value="<%= comment.id %>"/>
+    <h2>Actualizar datos</h2>
+    <main class="form-post-inputs">
+      <section class="form-post-caption">
+        <label for="caption">Edita tu comentario</label>
+        <input type="text" name="content" value="<%= comment.content %>"/>
+      </section>
+      <section class="form-submit">
+        <input type="submit" name="create" value="Actualizar"/> 
+      </section>
+    </main>
+  </form>
+</main>
