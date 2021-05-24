@@ -80,6 +80,7 @@ router.post('users.create', '/', async (ctx) => {
         'firstName',
         'email',
         'tag',
+        'password',
         'description',
         'picture',
       ],
