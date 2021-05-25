@@ -8,13 +8,17 @@
         <h4>"<%= user.description %> "</h4>
       </figcaption>
     </figure>
-    <section class="user-update-delete">
-      <a href="<%= updateUserPath(user.id) %>" title="Actualizar datos de usuario">
-        <i class="material-icons">edit</i>
-      </a>
-      <a href="<%= deleteUserPath(user.id) %>" title="Eliminar perfil de usuario">
-        <i class="material-icons">delete_forever</i>
-      </a>
+    <% if (locals.currentUser) { %>
+      <% if (locals.currentUser.id === user.id) { %>
+        <section class="user-update-delete">
+          <a href="<%= updateUserPath(user.id) %>" title="Actualizar datos de usuario">
+            <i class="material-icons">edit</i>
+          </a>
+          <a href="<%= deleteUserPath(user.id) %>" title="Eliminar perfil de usuario">
+            <i class="material-icons">delete_forever</i>
+          </a>
+      <% } %>
+    <% } %>
     </section>
   </section>
   <section id=section-one>
