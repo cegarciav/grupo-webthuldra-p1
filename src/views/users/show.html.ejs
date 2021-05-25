@@ -73,14 +73,19 @@
                 <button type="submit"><i class="material-icons">favorite_border</i></button>
               </form>
           <% }} else { %>
-            <i class="material-icons">favorite_border</i>
+            <a href="<%= paths.newSession %>">
+              <i class="material-icons">favorite_border</i>
+            </a>
           <% } %>
-          <a href="<%= updatePostPath(post.id) %>" title="Editar publicación">
-            <i class="material-icons">edit</i>
-          </a>
-          <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
-            <i class="material-icons">delete_forever</i>
-        </a>
+          <% if (locals.currentUser) { %>
+            <% if (locals.currentUser.id === user.id) { %>
+              <a href="<%= updatePostPath(post.id) %>" title="Editar publicación">
+                <i class="material-icons">edit</i>
+              </a>
+              <a href="<%= deletePostPath(post.id) %>" title="Eliminar publicación">
+                <i class="material-icons">delete_forever</i>
+              </a>
+          <% }} %>
         </section>
       </article>
     <% }); %> 

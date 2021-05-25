@@ -31,9 +31,15 @@
           <li>
             <a href="<%= usersPath() %>">Usuarios</a>
           </li>
-          <li>
-            <a href="<%= newUserPath() %>">Crear Usuario</a>
-          </li>
+          <% if (!locals.currentUser) { %>
+            <li>
+              <a href="<%= newUserPath() %>">Registrarse</a>
+            </li>
+          <% } else { %>
+            <li>
+              <a href="<%= userPath(locals.currentUser.id) %>">Mi Perfil</a>
+            </li>
+          <% } %>
           <li>
             <a href="<%= newPostPath() %>">Crear Publicación</a>
           </li>
