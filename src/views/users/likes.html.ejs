@@ -20,25 +20,25 @@
   <section id=section-one>
     <nav class="profile-nav">
       <ul>
-        <li class="profile-active-view">
-          <a>Publicaciones</a>
-        </li>
         <li>
-          <a href="<%= userLikesPath(user.id) %> ">Me gusta</a>
+          <a href="<%= userPath(user.id) %> ">Publicaciones</a>
+        </li>
+        <li class="profile-active-view">
+          <a>Me gusta</a>
         </li>
       </ul>
     </nav>
 
-    <% user.posts.forEach(post => { %>
+    <% user.interests.forEach(post => { %>
       <article class="post">
         <header>
           <figure class="foto-usuario-post">
-            <a href="<%= userPath(user.id) %>">
-              <img src="<%= user.picture? user.picture: assetPath('default_profile_picture.png') %>">
+            <a href="<%= userPath(post.user.id) %>">
+              <img src="<%= post.user.picture? post.user.picture: assetPath('default_profile_picture.png') %>">
             </a>
               <figcaption class="info-usuario">
-                <a href="<%= userPath(user.id) %>">
-                  <h1><%= user.firstName + " " + user.lastName %> </h1>
+                <a href="<%= userPath(post.user.id) %>">
+                  <h1><%= post.user.firstName + " " + post.user.lastName %> </h1>
                 </a>
                 <h2> <%= parseDate(post.createdAt) %>  </h2>
               </figcaption>

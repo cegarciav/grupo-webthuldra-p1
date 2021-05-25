@@ -111,3 +111,30 @@
 .user-details:hover {
     color: #25559a;
 }
+
+.profile-nav ul {
+    background-color: #ace;
+    margin-bottom: 10px;
+    width:max-content
+}
+
+.profile-nav a {
+    color: black;
+}
+
+.profile-nav li:hover {
+    border-bottom: 2px solid #25559a;
+    background-color: #ace;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile-nav .profile-active-view {
+    border-bottom: 2px solid #25559a;
+    font-weight: bold;
+}
+
+.profile-nav .profile-active-view:hover {
+    background-color: #ace;
+    cursor: auto;
+}
