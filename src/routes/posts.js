@@ -26,7 +26,7 @@ router.param('id', async (id, ctx, next) => {
   return next();
 });
 
-router.get('posts.new', '/new', async (ctx) => {
+router.get('posts.new', '/new', checkUser, async (ctx) => {
   const userList = await ctx.orm.user.findAll();
   const post = ctx.orm.post.build();
   await ctx.render('posts/new', {

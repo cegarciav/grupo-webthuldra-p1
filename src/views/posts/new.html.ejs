@@ -23,11 +23,9 @@
                 <input type="url" name="media" value="<%= post.media %>" /> 
             </section>
             <section>
-                <label for="userId">Ingrese el id de su usuario</label>
+                <label for="userId">Autor(a) de la publicación</label>
                 <select name="userId">
-                    <% userList.forEach(user => { %>
-                        <option value= "<%= user.id %>"" ><%=user.firstName + " " + user.lastName %></option>
-                    <% }); %>
+                        <option value= "<% locals.currentUser.id %>"><%= locals.currentUser.firstName + " " + locals.currentUser.lastName %></option>
                  </select>
             </section>
             <section class="form-submit">
