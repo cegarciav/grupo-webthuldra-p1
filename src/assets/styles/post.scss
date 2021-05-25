@@ -101,6 +101,21 @@
 .botones {
     box-sizing: border-box;
     height: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.botones form {
+    margin: 0;
+    padding: 0;
+    width: max-content;
+}
+
+.botones button {
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
 }
 
 .post-details {

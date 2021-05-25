@@ -1,10 +1,19 @@
 const KoaRouter = require('koa-router');
 const { ValidationError } = require('sequelize');
+const { generateMessage } = require('../helpers/likes');
 
 const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
-  ctx.state.post = await ctx.orm.post.findByPk(id, { include: ctx.orm.user });
+  ctx.state.post = await ctx.orm.post.findByPk(id,
+    {
+      include: [{
+        model: ctx.orm.user,
+      },
+      {
+        association: 'likers',
+      }],
+    });
   ctx.state.comments = await ctx.orm.comment.findAll({
     where: {
       postId: id,
@@ -26,14 +35,47 @@ router.get('posts.new', '/new', async (ctx) => {
   });
 });
 
+router.get('posts.likes', '/:id/likes', async (ctx) => {
+  const { post } = ctx.state;
+  await ctx.render('posts/likes', {
+    likers: post.likers,
+    postId: post.id,
+    postPath: (id) => (id ? ctx.router.url('posts.show', id) : '/'),
+  });
+});
+
+router.post('posts.likes.update', '/:id/likes', async (ctx) => {
+  const { post } = ctx.state;
+  try {
+    if (ctx.state.currentUser) {
+      const currentUserId = ctx.state.currentUser.id;
+      if (!post.isLikedByUser(currentUserId)) {
+        const newLike = await ctx.orm.like.build({ userId: currentUserId, postId: post.id });
+        newLike.save();
+      } else {
+        await ctx.orm.like.destroy({ where: { userId: currentUserId, postId: post.id } });
+      }
+    }
+  } catch (e) {
+    ctx.redirect(ctx.router.url('posts.show', post.id));
+  }
+  ctx.redirect(ctx.router.url('posts.show', post.id));
+});
+
 router.get('posts.show', '/:id', async (ctx) => {
   const { post, comments } = ctx.state;
+  const likersAmount = post.likers.length;
+  const isLiked = ctx.state.currentUser ? post.isLikedByUser(ctx.state.currentUser.id) : false;
   await ctx.render('posts/show', {
     post,
     comments,
+    likesMessage: generateMessage(isLiked, likersAmount),
+    isLiked,
     submitCommentPath: ctx.router.url('comments.create'),
     updateCommentPath: (id) => (id ? ctx.router.url('comments.update', id) : '/'),
     deleteCommentPath: (id) => (id ? ctx.router.url('comments.delete', id) : '/'),
+    postLikesPath: (id) => (id ? ctx.router.url('posts.likes', id) : '/'),
+    updateLikePath: (id) => (id ? ctx.router.url('posts.likes.update', id) : '/'),
     notice: ctx.flashMessage.notice,
   });
 });

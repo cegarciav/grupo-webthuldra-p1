@@ -12,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.user);
       this.hasMany(models.comment);
+      this.belongsToMany(models.user, { through: models.like, as: 'likers' });
+    }
+
+    isLikedByUser(userId) {
+      const likersIds = this.likers ? this.likers.map((liker) => liker.id) : [];
+      return likersIds.includes(userId);
     }
   }
   post.init({
