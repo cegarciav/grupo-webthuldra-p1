@@ -1,9 +1,9 @@
 <main>
-    <% if (errors) { %>
+    <% if (locals.errors) { %>
         <div class="errors">
             Es necesario arreglar los siguientes errores:
             <ul>
-                <% errors.forEach(error => { %>
+                <% locals.errors.forEach(error => { %>
                     <li><%= error.message %></li>
                 <% }); %>
             </ul>
@@ -25,11 +25,11 @@
             <section>
                 <label for="userId">Autor(a) de la publicación</label>
                 <select name="userId">
-                        <option value= "<% locals.currentUser.id %>"><%= locals.currentUser.firstName + " " + locals.currentUser.lastName %></option>
-                 </select>
+                        <option value= "<%= locals.currentUser.id %>"><%= locals.currentUser.firstName + " " + locals.currentUser.lastName %></option>
+                </select>
             </section>
             <section class="form-submit">
-                <input type="submit" name="create" value="Registrar"/> 
+                <input type="submit" name="create" value="Publicar"/> 
             </section>
         </main>
     </form>
