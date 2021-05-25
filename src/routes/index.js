@@ -14,7 +14,12 @@ router.get('root', '/', async (ctx) => {
   const { count, rows } = await ctx.orm.post.findAndCountAll({
     offset: (page - 1) * 10,
     limit: page * 10,
-    include: ctx.orm.user,
+    include: [{
+      model: ctx.orm.user,
+    },
+    {
+      association: 'likers',
+    }],
   });
   if (rows.length === 0 && page !== 1) return ctx.throw(404);
   const pagesAmount = Math.ceil(count / 10);
@@ -26,6 +31,7 @@ router.get('root', '/', async (ctx) => {
     posts: rows,
     pagesArray,
     pagesAmount,
+    updateLikePath: (id) => (id ? ctx.router.url('posts.likes.update', id) : '/'),
   });
 });
 

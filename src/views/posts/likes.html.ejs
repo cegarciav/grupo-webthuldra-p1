@@ -1,0 +1,22 @@
+<main>
+  <a href="<%= postPath(post.id) %> " class="go-back-link">
+    <i class="material-icons">arrow_back</i>
+      Regresar al post
+  </a>
+  <section class="likes">
+    <% likers.forEach(liker => { %>
+      <article>
+        <figure class="foto-usuario-like">
+          <a href="<%= userPath(liker.id) %>">
+            <img src="<%= liker.picture? liker.picture: assetPath('default_profile_picture.png') %>">
+          </a>
+          <figcaption class="info-usuario">
+            <a href="<%= userPath(liker.id) %>">
+              <h1><%= liker.firstName + " " + liker.lastName %> </h1>
+            </a>
+          </figcaption>
+        </figure>
+      </article>
+    <% }); %>
+  </section>
+</main>
