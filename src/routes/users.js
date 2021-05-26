@@ -1,5 +1,7 @@
 const KoaRouter = require('koa-router');
 const { ValidationError } = require('sequelize');
+const { checkUser } = require('../middlewares/checkUser');
+const { userIdentificationUsers } = require('../middlewares/userIdentificationUsers');
 
 const router = new KoaRouter();
 
@@ -116,8 +118,9 @@ router.post('users.create', '/', async (ctx) => {
   }
 });
 
-router.get('users.update', '/:id/update', async (ctx) => {
+router.get('users.update', '/:id/update', checkUser, userIdentificationUsers, async (ctx) => {
   const { user } = ctx.state;
+
   await ctx.render('users/update', {
     user,
     submitUserPath: ctx.router.url('users.create'),
@@ -125,7 +128,7 @@ router.get('users.update', '/:id/update', async (ctx) => {
   });
 });
 
-router.put('users.modify', '/', async (ctx) => {
+router.put('users.modify', '/', checkUser, userIdentificationUsers, async (ctx) => {
   const userId = ctx.request.body.id;
   delete ctx.request.body.id;
 
@@ -145,7 +148,7 @@ router.put('users.modify', '/', async (ctx) => {
   }
 });
 
-router.get('users.delete', '/:id/delete', async (ctx) => {
+router.get('users.delete', '/:id/delete', checkUser, userIdentificationUsers, async (ctx) => {
   const { user } = ctx.state;
   await ctx.render('users/delete', {
     user,
@@ -154,7 +157,7 @@ router.get('users.delete', '/:id/delete', async (ctx) => {
   });
 });
 
-router.delete('users.remove', '/', async (ctx) => {
+router.delete('users.remove', '/', checkUser, userIdentificationUsers, async (ctx) => {
   const userId = ctx.request.body.id;
 
   try {

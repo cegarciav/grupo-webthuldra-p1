@@ -1,5 +1,7 @@
 const KoaRouter = require('koa-router');
 const { ValidationError } = require('sequelize');
+const { checkUser } = require('../middlewares/checkUser');
+const { userIdentificationComments } = require('../middlewares/userIdentificationPostsComment');
 
 const router = new KoaRouter();
 
@@ -9,7 +11,7 @@ router.param('id', async (id, ctx, next) => {
   return next();
 });
 
-router.post('comments.create', '/', async (ctx) => {
+router.post('comments.create', '/', checkUser, async (ctx) => {
   const { _method, postId } = ctx.request.body;
   if (_method && _method === 'put') ctx.redirect(ctx.router.url('comments.modify'));
   if (_method && _method === 'delete') ctx.redirect(ctx.router.url('comments.remove'));
@@ -42,7 +44,7 @@ router.post('comments.create', '/', async (ctx) => {
   }
 });
 
-router.get('comments.update', '/:id/update', async (ctx) => {
+router.get('comments.update', '/:id/update', checkUser, userIdentificationComments, async (ctx) => {
   const { comment } = ctx.state;
   await ctx.render('comments/update', {
     comment,
@@ -52,7 +54,7 @@ router.get('comments.update', '/:id/update', async (ctx) => {
   });
 });
 
-router.put('comments.modify', '/', async (ctx) => {
+router.put('comments.modify', '/', checkUser, userIdentificationComments, async (ctx) => {
   const commentId = ctx.request.body.id;
   delete ctx.request.body.id;
   const comment = await ctx.orm.comment.findByPk(commentId);
@@ -67,7 +69,7 @@ router.put('comments.modify', '/', async (ctx) => {
   }
 });
 
-router.get('comments.delete', '/:id/delete', async (ctx) => {
+router.get('comments.delete', '/:id/delete', checkUser, userIdentificationComments, async (ctx) => {
   const { comment } = ctx.state;
   await ctx.render('comments/delete', {
     comment,
@@ -76,7 +78,7 @@ router.get('comments.delete', '/:id/delete', async (ctx) => {
   });
 });
 
-router.delete('comments.remove', '/', async (ctx) => {
+router.delete('comments.remove', '/', checkUser, userIdentificationComments, async (ctx) => {
   const commentId = ctx.request.body.id;
   const comment = await ctx.orm.comment.findByPk(commentId);
   const { postId } = comment;
