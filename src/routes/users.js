@@ -59,6 +59,8 @@ router.get('users.list', '/', async (ctx) => {
 });
 
 router.get('users.new', '/new', async (ctx) => {
+  const { currentUser } = ctx.state;
+  if (currentUser) ctx.redirect(ctx.router.url('root'));
   const user = ctx.orm.user.build();
   await ctx.render('users/new', {
     user,
