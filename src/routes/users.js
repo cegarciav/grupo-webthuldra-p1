@@ -94,6 +94,12 @@ router.post('users.create', '/', async (ctx) => {
 
   if (_method && _method === 'delete') ctx.redirect(ctx.router.url('users.remove'));
 
+  const { currentUser } = ctx.state;
+  if (currentUser) {
+    ctx.redirect(ctx.router.url('root'));
+    return;
+  }
+
   const pictureUrl = ctx.request.body.picture;
   if (!pictureUrl) delete ctx.request.body.picture;
 
@@ -137,9 +143,13 @@ router.put('users.modify', '/', checkUser, userIdentificationUsers, async (ctx) 
   const pictureUrl = ctx.request.body.picture;
   if (!pictureUrl) ctx.request.body.picture = null;
 
+  const { password } = ctx.request.body;
+  if (!password) delete ctx.request.body.password;
+
   try {
     await ctx.orm.user.update(ctx.request.body, {
       where: { id: userId },
+      individualHooks: true,
     });
     ctx.redirect(ctx.router.url('users.show', userId));
   } catch (e) {
