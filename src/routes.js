@@ -17,6 +17,10 @@ router.use(async (ctx, next) => {
         ctx.app.emit('error', err, ctx);
         ctx.redirect(ctx.router.url('session.new'));
         break;
+      case 403:
+        ctx.app.emit('error', err, ctx);
+        ctx.redirect(ctx.router.url('root'));
+        break;
       default:
         throw err;
     }

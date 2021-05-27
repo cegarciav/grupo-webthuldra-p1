@@ -33,12 +33,14 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: true,
       },
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
       },
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -46,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
         notEmpty: true,
       },
+      allowNull: false,
     },
     tag: {
       type: DataTypes.STRING,
@@ -66,6 +69,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: true,
       },
+      allowNull: false,
     },
   }, {
     sequelize,

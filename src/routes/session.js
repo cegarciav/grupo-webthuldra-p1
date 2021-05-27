@@ -1,12 +1,21 @@
 const KoaRouter = require('koa-router');
+const { checkUser } = require('../middlewares/checkUser');
 
 const router = new KoaRouter();
 
-router.get('session.new', '/new', (ctx) => ctx.render(
-  'session/new', {
-    submitPath: ctx.router.url('session.create'),
-  },
-));
+router.get('session.new', '/new', async (ctx) => {
+  const { currentUser } = ctx.state;
+  if (currentUser) {
+    ctx.redirect(ctx.router.url('root'));
+    return;
+  }
+
+  await ctx.render(
+    'session/new', {
+      submitPath: ctx.router.url('session.create'),
+    },
+  );
+});
 
 router.post('session.create', '/', async (ctx) => {
   const { email, password } = ctx.request.body;
@@ -25,7 +34,7 @@ router.post('session.create', '/', async (ctx) => {
   }
 });
 
-router.delete('session.destroy', '/', async (ctx) => {
+router.delete('session.destroy', '/', checkUser, async (ctx) => {
   ctx.session.currentUserId = null;
   ctx.redirect('/');
 });
