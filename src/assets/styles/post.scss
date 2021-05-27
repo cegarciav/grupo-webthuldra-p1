@@ -126,3 +126,9 @@
 .post-details:hover {
     color: #25559a;
 }
+
+.post .post-summary {
+    flex-direction: row;
+    margin: 0;
+    justify-content: start;
+}

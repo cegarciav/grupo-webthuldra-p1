@@ -46,7 +46,7 @@ router.get('posts.likes', '/:id/likes', async (ctx) => {
   });
 });
 
-router.post('posts.likes.update', '/:id/likes', async (ctx) => {
+router.post('posts.likes.update', '/:id/likes', checkUser, async (ctx) => {
   const { post } = ctx.state;
   try {
     if (ctx.state.currentUser) {
@@ -90,6 +90,7 @@ router.post('posts.create', '/', checkUser, async (ctx) => {
   const mediaUrl = ctx.request.body.media;
   if (!mediaUrl) delete ctx.request.body.media;
 
+  ctx.request.body.userId = ctx.state.currentUser.id;
   const post = ctx.orm.post.build(ctx.request.body);
   try {
     await post.save({

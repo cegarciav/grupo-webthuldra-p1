@@ -1,8 +1,9 @@
 async function userIdentificationComments(ctx, next) {
   const { currentUser } = ctx.state;
-  const comment = await ctx.orm.comment.findByPk(ctx.request.params.id);
+  const idToCheck = ctx.request.params.id || ctx.request.body.id;
+  const comment = await ctx.orm.comment.findByPk(idToCheck);
 
-  if (currentUser.id !== comment.userId) ctx.throw(401);
+  if (currentUser.id !== comment.userId) ctx.throw(403);
   return next();
 }
 
