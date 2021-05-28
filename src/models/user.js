@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
     async checkPassword(password) {
       return bcrypt.compare(password, this.password);
     }
+
+    getFullName() {
+      return `${this.firstName} ${this.lastName}`;
+    }
   }
   user.init({
     firstName: {
